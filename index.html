@@ -16,17 +16,20 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="css/bracket.css">
-	 <link rel="manifest" href="/manifest.json">
+	 <link rel="manifest" href="manifest.json">
 	 <style>
-	 #installLink {
-    background-color: #007bff;
+#installLink {
+    background-color: #28a745;
     color: white;
-    text-decoration: none;
     padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 5px;
-    display: inline-block; /* Makes it behave like a button */
+}
+#installLink:hover {
+    background-color: #218838;
 }
 
 	 </style>
@@ -73,7 +76,7 @@
           </ul>
         </li><!-- br-menu-item -->
         <li class="br-menu-item">
-		   <a href="#" id="installLink" class="br-menu-link active"style="display: none;">Install App</a>
+          <a href="#" id="installLink">Install App</a>
         </li><!-- br-menu-item -->
 
       </ul><!-- br-sideleft-menu -->
@@ -331,34 +334,35 @@
 let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent the default install prompt from showing automatically
+    // Prevent the automatic install prompt
     e.preventDefault();
-    // Store the event for triggering later
+    // Store the event for later
     deferredPrompt = e;
+});
 
-    // Show the install link
-    const installLink = document.getElementById('installLink');
-    installLink.style.display = 'inline'; // or 'block' depending on your preference
+document.getElementById('installLink').addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent default link behavior
 
-    // When the user clicks the install link
-    installLink.addEventListener('click', (event) => {
-        // Prevent the default anchor link behavior
-        event.preventDefault();
-        // Hide the install link (optional)
-        installLink.style.display = 'none';
+    // Check if we captured the install prompt
+    if (deferredPrompt) {
         // Show the install prompt
         deferredPrompt.prompt();
-        // Check the user's response to the prompt
+        
+        // Handle user's choice
         deferredPrompt.userChoice.then((choiceResult) => {
             if (choiceResult.outcome === 'accepted') {
                 console.log('User accepted the install prompt');
             } else {
                 console.log('User dismissed the install prompt');
             }
-            // Clear the deferredPrompt variable, as it's no longer needed
+            // Clear the prompt as it's already been used
             deferredPrompt = null;
         });
-    });
+    } else {
+        // If install prompt isn't available, alert the user
+        alert("The app is already installed or not installable at the moment.");
+    }
 });
+
 
 </script>
