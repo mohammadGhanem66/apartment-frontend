@@ -2,10 +2,10 @@ const CACHE_NAME = 'dashboard-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  'assets/css/soft-ui-dashboard.css',
-  'assets/css/soft-ui-dashboard.min.css',
-  'assets/js/soft-ui-dashboard.js',
-  'assets/img/favicon.png',
+  'css/bracket.css',
+  'js/dashboard.js',
+  'js/bracket.js',
+  'img/logo.png',
   // Add more files to cache
 ];
 
