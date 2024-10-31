@@ -76,7 +76,7 @@
           </ul>
         </li><!-- br-menu-item -->
         <li class="br-menu-item">
-          <a href="#" id="installLink">Install App</a>
+          <a href="#" id="installBtn">Install App</a>
         </li><!-- br-menu-item -->
 
       </ul><!-- br-sideleft-menu -->
@@ -350,6 +350,38 @@ function displayBuildings(buildings) {
 window.onload = function() {
   loadBuildings();
 };
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent the mini-infobar from appearing on mobile
+  e.preventDefault();
+  // Save the event for later
+  deferredPrompt = e;
+
+  // Show your custom install button (assuming it has the ID 'installBtn')
+  const installBtn = document.getElementById('installBtn');
+  if (installBtn) {
+    installBtn.style.display = 'block';
+  }
+});
+document.getElementById('installBtn').addEventListener('click', async () => {
+  if (deferredPrompt) {
+    // Show the install prompt
+    deferredPrompt.prompt();
+
+    // Wait for the user to respond to the prompt
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      console.log('User accepted the install prompt');
+    } else {
+      console.log('User dismissed the install prompt');
+    }
+
+    // Clear the deferred prompt variable to prevent reuse
+    deferredPrompt = null;
+    document.getElementById('installBtn').style.display = 'none';
+  }
+});
 
 
 </script>
