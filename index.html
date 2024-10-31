@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-    <title>Apartment Managment System</title>
+    <title>الرئيسية</title>
 
     <!-- vendor css -->
     <link href="lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -70,7 +70,7 @@
             <span class="menu-item-label">العمارات</span>
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">
-            <li class="sub-item"><a href="#" class="sub-link">العمارات</a></li>
+            <li class="sub-item"><a href="building.html" class="sub-link">العمارات</a></li>
             <li class="sub-item"><a href="apartment-create.html" class="sub-link">انشاء عمارة</a></li>
             <li class="sub-item"><a href="#" class="sub-link">التعديل على عمارة</a></li>
           </ul>
@@ -243,46 +243,18 @@
               <div class="d-md-flex justify-content-between pd-25">
 
           <div class="bd bd-gray-300 rounded table-responsive">
-            <table class="table table-striped mg-b-0">
+            <table class="table table-striped mg-b-0" id ="buildingsTable">
               <thead>
                 <tr>
                   <th>رقم العمارة</th>
                   <th>اسم العمارة</th>
                   <th>عدد الشقق</th>
                   <th>مجموع التحصيل الشهري</th>
+                  <th>قيمة الخدمات الشهرية</th>
+                  <th>افتح معلومات العمارة</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>الياسمين</td>
-                  <td>5</td>
-                  <td>120</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-					<td>العماد</td>
-                  <td>3</td>
-                  <td>$520</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-               <td>الفرح</td>
-                  <td>15</td>
-                  <td>$4420</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                <td>الغانم</td>
-                  <td>8</td>
-                  <td>$3320</td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                 <td>عمارة</td>
-                  <td>9</td>
-                  <td>$3202</td>
-                </tr>
               </tbody>
             </table>
           </div><!-- bd -->
@@ -331,38 +303,53 @@
   </body>
 </html>
 <script>
-let deferredPrompt;
+function loadBuildings() {
+  // API URL
+  const apiUrl = "https://apartman-service-production.up.railway.app/buildings/all";
 
-window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent the automatic install prompt
-    e.preventDefault();
-    // Store the event for later
-    deferredPrompt = e;
-});
-
-document.getElementById('installLink').addEventListener('click', (event) => {
-    event.preventDefault(); // Prevent default link behavior
-
-    // Check if we captured the install prompt
-    if (deferredPrompt) {
-        // Show the install prompt
-        deferredPrompt.prompt();
-        
-        // Handle user's choice
-        deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-                console.log('User accepted the install prompt');
-            } else {
-                console.log('User dismissed the install prompt');
-            }
-            // Clear the prompt as it's already been used
-            deferredPrompt = null;
-        });
-    } else {
-        // If install prompt isn't available, alert the user
-        alert("The app is already installed or not installable at the moment.");
+  fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
     }
-});
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+    displayBuildings(data); 
+  })
+  .catch(error => {
+    console.error('There was an error!', error);
+  });
+}
+
+// Function to display buildings in the DOM
+function displayBuildings(buildings) {
+  const buildingsTableBody = document.querySelector('#buildingsTable tbody');
+  buildingsTableBody.innerHTML = '';
+
+  buildings.forEach(building => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${building.id}</td>
+      <td>${building.name}</td>
+      <td>${building.apartmentCount}</td>
+      <td>${building.monthlyRentPrice}</td>
+      <td>${building.monthlyFees}</td>
+      <td style="cursor: pointer; font-weight: bold"><a href="/building/${building.id}" class="view-details">اظهر التفاصيل</a></td>
+    `;
+    buildingsTableBody.appendChild(row);
+  });
+}
+
+window.onload = function() {
+  loadBuildings();
+};
 
 
 </script>

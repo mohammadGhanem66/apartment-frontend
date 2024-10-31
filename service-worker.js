@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dashboard-cache-v1';
+const CACHE_NAME = 'dashboard-cache-v2';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -6,6 +6,7 @@ const urlsToCache = [
   'js/dashboard.js',
   'js/bracket.js',
   'img/logo.png',
+  'building.html',
   // Add more files to cache
 ];
 
