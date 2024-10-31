@@ -34,14 +34,20 @@
 
 	 </style>
   </head>
-  
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('Service Worker registered successfully'))
-        .catch((error) => console.log('Service Worker registration failed:', error));
-    }
-  </script>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker
+        .register("/service-worker.js")
+        .then(function (registration) {
+          console.log("ServiceWorker registered: ", registration);
+        })
+        .catch(function (error) {
+          console.log("ServiceWorker registration failed: ", error);
+        });
+    });
+  }
+</script>
   <body>
 
     <!-- ########## START: LEFT PANEL ########## -->

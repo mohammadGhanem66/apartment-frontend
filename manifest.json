@@ -2,6 +2,7 @@
   "name": "Apartments sys",
   "short_name": "Dashboard",
   "start_url": "/index.html",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#007bff",
