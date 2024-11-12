@@ -251,7 +251,7 @@
                   <th>عدد الشقق</th>
                   <th>مجموع التحصيل الشهري</th>
                   <th>قيمة الخدمات الشهرية</th>
-                  <th>افتح معلومات العمارة</th>
+                  <th>اظهر معلومات العمارة</th>
                 </tr>
               </thead>
               <tbody>
@@ -311,6 +311,7 @@ function loadBuildings() {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw',
     }
   })
   .then(response => {
@@ -341,7 +342,7 @@ function displayBuildings(buildings) {
       <td>${building.apartmentCount}</td>
       <td>${building.monthlyRentPrice}</td>
       <td>${building.monthlyFees}</td>
-      <td style="cursor: pointer; font-weight: bold"><a href="/building/${building.id}" class="view-details">اظهر التفاصيل</a></td>
+      <td style="cursor: pointer; font-weight: bold"><a href="building.html?id=${building.id}" class="view-details">اظهر التفاصيل</a></td>
     `;
     buildingsTableBody.appendChild(row);
   });
