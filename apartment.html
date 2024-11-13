@@ -28,7 +28,7 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>Dashboard Cards | Building</title>
+    <title>Dashboard Cards | Apartment </title>
 
     <!-- vendor css -->
     <link href="lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -179,7 +179,7 @@
       <div class="br-pagetitle">
         <i class="icon icon ion-ios-photos"></i>
         <div>
-          <h4 id="Bname"></h4>
+          <h4 id="Aname"></h4>
          </div>
       </div><!-- d-flex -->
 
@@ -191,39 +191,39 @@
           <div class="col-sm-6 col-lg-4">
             <div class="card shadow-base bd-0">
               <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
-                <h6 class="card-title tx-uppercase tx-12 mg-b-0">مكان العمارة</h6>
-                <span class="tx-12 tx-uppercase" id="Blocation"> </span>
+                <h6 class="card-title tx-uppercase tx-12 mg-b-0">وصف العمارة</h6>
+                <span class="tx-12 tx-uppercase" id="Adescription"> </span>
               </div><!-- card-header -->
               <div class="card-body d-xs-flex justify-content-between align-items-center">
-                <h4 class="mg-b-0 tx-inverse tx-lato tx-bold">عدد الشقق</h4>
-                <p class="mg-b-0 tx-sm"><i class='fa fa-home tx-warning'></i> <span class="tx-warning"id ="BroomsCount"></span></p>
+                <h5 class="mg-b-0 tx-inverse tx-lato tx-bold">عدد الغرف</h5>
+                <p class="mg-b-0 tx-sm"><i class='fa fa-home tx-warning'></i> <span class="tx-warning"id ="AroomsCount"></span></p>
               </div><!-- card-body -->
             </div><!-- card -->
           </div><!-- col-4 -->
           <div class="col-sm-6 col-lg-4 mg-t-20 mg-sm-t-0">
             <div class="card shadow-base bd-0">
               <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
-                <h6 class="card-title tx-uppercase tx-12 mg-b-0">عدد الطوابق</h6>
-				<p class="mg-b-0 tx-sm"><i class="fa fa-bars tx-success"></i> <span class="tx-success" id="BfloorsCount"></span></p>
+                <h6 class="card-title tx-uppercase tx-12 mg-b-0">هل الشقة متاحة ؟</h6>
+				<p class="mg-b-0 tx-sm"><i class="fa fa-bars tx-success"></i> <span class="tx-success" id="AisAvaliable"></span></p>
               </div><!-- card-header -->
               <div class="card-body d-xs-flex justify-content-between align-items-center">
-                <h4 class="mg-b-0 tx-inverse tx-lato tx-bold"> التحصيل الشهري </h4>
-				<p class="mg-b-0 tx-sm"><i class="fa fa-gem tx-danger" aria-hidden="true"></i> <span class="tx-danger" id="BtotalCollection"></span></p>
+                <h5 class="mg-b-0 tx-inverse tx-lato tx-bold"> قيمة الاجار الشهرية</h5>
+				<p class="mg-b-0 tx-sm"><i class="fa fa-gem tx-danger" aria-hidden="true"></i> <span class="tx-danger" id="ArentingValuePerMonth"></span></p>
               </div><!-- card-body -->
             </div><!-- card -->
           </div><!-- col-4 -->
-          <div class="col-sm-6 col-lg-4 mg-t-20 mg-lg-t-0">
+          <!-- <div class="col-sm-6 col-lg-4 mg-t-20 mg-lg-t-0">
             <div class="card shadow-base bd-0">
               <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
                 <h6 class="card-title tx-uppercase tx-12 mg-b-0">قيمة الخدمات الشهرية </h6>
                 <p class="mg-b-0 tx-sm"><i class="fa fa-gem tx-danger" aria-hidden="true"></i> <span class="tx-danger" id="BtotalServices"> </span></p>
-              </div><!-- card-header -->
+              </div>
               <div class="card-body d-xs-flex justify-content-between align-items-center">
                 <h4 class="mg-b-0 tx-inverse tx-lato tx-bold"></h4>
                 <p class="mg-b-0 tx-sm"></p>
-              </div><!-- card-body -->
-            </div><!-- card -->
-          </div><!-- col-4 -->
+              </div>
+            </div> 
+          </div>  -->
         </div><!-- row -->
 
       
@@ -238,127 +238,35 @@
           <div class="col-lg-12 mg-t-20 mg-lg-t-0">
             <div class="card shadow-base bd-0">
               <div class="card-header pd-20 bg-transparent">
-                <h6 class="card-title tx-uppercase tx-12 mg-b-0">الشقق</h6>
+                <h4 class="card-title tx-uppercase tx-25 mg-b-0">الدفعات</h4>
               </div><!-- card-header -->
               <table class="table table-responsive mg-b-0 tx-12" id="apartmentsTable">
                 <thead>
                   <tr class="tx-10">
-                    <th class="wd-10p pd-y-5">&nbsp;</th>
-                    <th class="pd-y-5">الاسم</th>
-                    <th class="pd-y-5 tx-right">الرقم</th>
-                    <th class="pd-y-5">مبلغ التحصيل</th>
-                    <th class="pd-y-5">مؤجرة ؟</th>
-                    <th class="pd-y-5">اظهر معلومات الشقة</th>
+                    <th class="pd-y-5">قيمة الدفعة</th>
+                    <th class="pd-y-5 tx-right">تاريخ الدفعة</th>
+                    <th class="pd-y-5">عن شهر</th>
+                    <th class="pd-y-5">نوع الدفعة  </th>
+                    <th class="pd-y-5">رقم الشيك ان وجد</th>
+                    <th class="pd-y-5">تاريخ استحقاق الشيك ان وجد </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td class="pd-l-20">
-                      <img src="https://via.placeholder.com/800x533" class="wd-55" alt="Image">
-                    </td>
-                    <td>
-                      <a href="" class="tx-inverse tx-14 tx-medium d-block">شقة الاحمد</a>
-                    </td>
-                    <td class="valign-middle tx-right">3</td>
-                    <td class="valign-middle"><span class="tx-success"><i class="icon ion-android-arrow-up mg-r-5"></i>540</span></td>
-                    <td class="valign-middle"><span class="tx-success"><i class="icon ion-android-arrow-up mg-r-5"></i>نعم</span></td>
-                    <td class="valign-middle">
-                      <a href="" class="tx-gray-600 tx-22"><i class="icon ion-android-more-horizontal"></i></a>
-                    </td>
-                  </tr>
-                       <tr>
-                    <td class="pd-l-20">
-                      <img src="https://via.placeholder.com/800x533" class="wd-55" alt="Image">
-                    </td>
-                    <td>
-                      <a href="" class="tx-inverse tx-14 tx-medium d-block">شقة الاحمد</a>
-                    </td>
-                    <td class="valign-middle tx-right">3</td>
-                    <td class="valign-middle"><span class="tx-success"><i class="icon ion-android-arrow-up mg-r-5"></i>540</span></td>
-                    <td class="valign-middle"><span class="tx-success"><i class="icon ion-android-arrow-up mg-r-5"></i>نعم</span></td>
-                    <td class="valign-middle">
-                      <a href="" class="tx-gray-600 tx-22"><i class="icon ion-android-more-horizontal"></i></a>
-                    </td>
-                  </tr>
-				            <tr>
-                    <td class="pd-l-20">
-                      <img src="https://via.placeholder.com/800x533" class="wd-55" alt="Image">
-                    </td>
-                    <td>
-                      <a href="" class="tx-inverse tx-14 tx-medium d-block">شقة الاحمد</a>
-                    </td>
-                    <td class="valign-middle tx-right">3</td>
-                    <td class="valign-middle"><span class="tx-success"><i class="icon ion-android-arrow-up mg-r-5"></i>540</span></td>
-                    <td class="valign-middle"><span class="tx-success"><i class="icon ion-android-arrow-up mg-r-5"></i>نعم</span></td>
-                    <td class="valign-middle ">
-                      <a href="" class="tx-gray-600 tx-22"><i class="icon ion-android-more-horizontal"></i></a>
-                    </td>
-                  </tr>
-                
-         
                 </tbody>
               </table>
               <div class="card-footer tx-12 pd-y-15 bg-transparent">
-                <a data-toggle="collapse" href="#collapseExample"  aria-expanded="false" aria-controls="collapseExample"class="tx-15 tx-success"><i class="fa fa-plus mg-r-5 tx-danger"></i> اضافة شقة جديدة في هذه العمارة </a>
+                <a href=""class="tx-15 tx-warning tx-bold"><i class="fa fa-edit mg-r-5 tx-danger"></i>  أضافة دفعة جديدة <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                  <meta charset="UTF-8">
+                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                  <title>Document</title>
+                </head>
+                <body>
+                  
+                </body>
+                </html> </a>
               </div><!-- card-footer -->
-              <div class="collapse" id="collapseExample">
-                <div class="card card-body">
-                  <form class="form-layout form-layout-1" enctype="multipart/form-data">
-                    <div class="row mg-b-25">
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <label class="form-control-label">اسم الشقة: <span class="tx-danger">*</span></label>
-                          <input class="form-control" type="text" id="name" name="name" placeholder="مثال شقة الغانم" required>
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <label class="form-control-label"> وصف الشقة:  </label>
-                          <input class="form-control" type="text" id="description" name="description">
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <label class="form-control-label">  مبلغ الاجار الشهري : <span class="tx-danger">*</span></label>
-                          <input class="form-control" type="text" id="monthlyRenting" name="monthlyRenting" placeholder="مثال : 500" required>
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <label class="form-control-label"> العملة: <span class="tx-danger">*</span></label>
-                          <select class="custom-select" id="currency" name="currency"required>
-                            <option selected value="">اختر...</option>
-                            <option value="NIS">شيكل</option>
-                            <option value="JOD">دينار اردني</option>
-                            <option value="USD">دولار امريكي</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <label class="form-control-label"> عدد الغرف: <span class="tx-danger">*</span></label>
-                          <input class="form-control" type="text" id="roomsCount" name="roomsCount" placeholder="مثال : 4" required>
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <label class="form-control-label"> طريقة الدفع: <span class="tx-danger">*</span></label>
-                          <select class="custom-select" id="howToPay" name="howToPay"required>
-                            <option selected value="">اختر...</option>
-                            <option value="YEARLY">سنوي</option>
-                            <option value="HALF_YEARLY">نص سنوي</option>
-                            <option value="MONTHLY">شهري</option>
-                          </select>
-                        </div>
-                      </div>
-                    
-                    </div>
-                    <div class="form-layout-footer">
-                      <button class="btn btn-success" type="submit">انشاء</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
             </div><!-- card -->
           </div><!-- col-6 -->
         </div><!-- row -->
@@ -389,11 +297,6 @@
     <script>
       $(function(){
         'use strict'
-
-        // FOR DEMO ONLY
-        // menu collapsed by default during first page load or refresh with screen
-        // having a size between 992px and 1199px. This is intended on this page only
-        // for better viewing of widgets demo.
         $(window).resize(function(){
           minimizeMenu();
         });
@@ -413,20 +316,20 @@
           }
         }
       });
-      // Step 1: Get the building ID from the URL
+      // Step 1: Get the apartment ID from the URL
       const urlParams = new URLSearchParams(window.location.search);
-      const buildingId = urlParams.get('id');
-      console.log("Building Id is :- "+ buildingId);
+      const apartmentId = urlParams.get('id');
+      console.log("Apartment Id is :- "+ apartmentId);
       // Step 2: Fetch building details
-      if (buildingId) {
-        fetchBuildingDetails(buildingId);
-        fetchApartments(buildingId);
+      if (apartmentId) {
+        fetchApartmentDetails(apartmentId);
+        fetchPayments(apartmentId);
       } else {
-        console.error('No building ID provided in URL');
+        console.error('No Apartment ID provided in URL');
       }
 
-      function fetchBuildingDetails(id) {
-        const apiUrl = `https://apartman-service-production.up.railway.app/buildings/${id}`;
+      function fetchApartmentDetails(id) {
+        const apiUrl = `https://apartman-service-production.up.railway.app/apartments/${id}`;
         
         fetch(apiUrl, {
           method: 'GET',
@@ -442,14 +345,11 @@
           return response.json();
         })
         .then(data => {
-            // Step 3: Display building details
-            // document.getElementById('building-id').textContent = data.id;
-            document.getElementById('Bname').textContent ="عمارة "+ data.name;
-            document.getElementById('Blocation').textContent = data.address;
-            document.getElementById('BroomsCount').textContent = data.apartmentCount;
-            document.getElementById('BfloorsCount').textContent = data.floorsCount;
-            document.getElementById('BtotalServices').textContent = data.monthlyFees || '-';
-            document.getElementById('BtotalCollection').textContent = data.monthlyRentPrice;
+            document.getElementById('Aname').textContent ="شقة "+ data.name;
+            document.getElementById('Adescription').textContent = data.description;
+            document.getElementById('AroomsCount').textContent = data.numberOfRooms;
+            document.getElementById('AisAvaliable').textContent = data.available ? 'نعم' : 'لا';
+            document.getElementById('ArentingValuePerMonth').textContent = data.monthlyRentValue;
             console.log(data.name);
             console.log(data.monthlyRentPrice);
         })
@@ -458,8 +358,9 @@
         });
       }
 
-      function fetchApartments(buildingId) {
-      const apiUrl = `https://apartman-service-production.up.railway.app/apartments/building-apartments/${buildingId}`;
+      function fetchPayments(apartmentId) {
+      console.log("Payments API");
+      const apiUrl = `https://apartman-service-production.up.railway.app/payments/apartment-payments/${apartmentId}`;
 
       fetch(apiUrl, {
         method: 'GET',
@@ -474,79 +375,27 @@
         }
         return response.json();
       })
-      .then(apartments => {
-        const apartmentsTableBody = document.querySelector('#apartmentsTable tbody');
-        apartmentsTableBody.innerHTML = ''; // Clear any existing rows
+      .then(payments => {
+        const paymentsTableBody = document.querySelector('#apartmentsTable tbody');
+        paymentsTableBody.innerHTML = ''; // Clear any existing rows
 
-        apartments.forEach(apartment => {
+        payments.forEach(payment => {
           const row = document.createElement('tr');
           row.innerHTML = `
-            <td class="pd-l-20"><img src="https://via.placeholder.com/800x533" class="wd-55" alt="Image"></td>
-            <td><a href="" class="tx-inverse tx-14 tx-medium d-block">${apartment.name}</a></td>
-            <td>11</td>
-            <td class="valign-middle"><span class="tx-success"><i class="icon ion-android-arrow-up mg-r-5"></i>${apartment.monthlyRentValue} ${apartment.currency}</span></td>
-            <td class="valign-middle"><span class="tx-success tx-14 tx-${apartment.available ? 'success' : 'danger'}">${apartment.available ? 'متاح' : 'غير متاح'}</span></td>
-            <td style="cursor: pointer; font-weight: bold"><a href="apartment.html?id=${apartment.id}" class="view-details">اظهر التفاصيل</a></td>
-          `;
-          apartmentsTableBody.appendChild(row);
+            <td class="tx-success">${payment.value}</td>
+            <td>${payment.paymentDate.split('T')[0]}</td>
+            <td>${payment.month}</td>
+            <td class="tx-warning">${payment.paymentType}</td>
+            <td>${payment.chequeNumber ? payment.chequeNumber : '-'}</td>
+            <td class="tx-danger">${payment.chequeDueDate ? payment.chequeDueDate.split('T')[0] : '-'}</td>
+            `;
+            paymentsTableBody.appendChild(row);
         });
       })
       .catch(error => {
-        console.error('Error fetching apartments:', error);
+        console.error('Error fetching payments:', error);
       });
     }
-
-    
-    // Creating Appartment ! 
-    document.querySelector('form').addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent the form from submitting in the traditional way
-    
-    // Collect form data
-    const apartmentData = {
-      name: document.getElementById('name').value,
-      description: document.getElementById('description').value,
-      monthlyRentValue: document.getElementById('monthlyRenting').value,
-      currency: document.getElementById('currency').value ? document.getElementById('currency').value : 'NIS',
-      numberOfRooms: document.getElementById('roomsCount').value,
-      howToPay: document.getElementById('howToPay').value ? document.getElementById('howToPay').value : 'MONTHLY',
-      buildingId: buildingId,
-      type: "APARTMENT",
-      tenantId: 1,
-      contractPicture: "img",
-      available: true
-    };
-
-    // API URL and Bearer token
-    const apiUrl = "https://apartman-service-production.up.railway.app/apartments";
-    const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw";
-    
-    // Send POST request to create apartment
-    fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-      body: JSON.stringify(apartmentData)
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Apartment created successfully:', data);
-      alert('تم انشاء الشقة بنجاح');
-      // Optionally reset the form or redirect the user
-      document.querySelector('form').reset();
-      fetchApartments(buildingId);
-    })
-    .catch(error => {
-      console.error('There was an error creating the apartment!', error);
-      alert('Failed to create apartment. Please try again.');
-    });
-  });
 
     </script>
   </body>
