@@ -1,10 +1,11 @@
 {
   "name": "Apartments sys",
-  "short_name": "Dashboard",
-  "start_url": "/index.html",
+  "short_name": "Apartments",
+  "start_url": "index.html",
   "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
+  "orientation": "portrait-primary",
   "theme_color": "#007bff",
   "description": "A PWA Apartment project",
   "icons": [
@@ -16,6 +17,16 @@
     {
       "src": "img/logo.png",
       "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "img/logo.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "img/logo.png",
+      "sizes": "152x152",
       "type": "image/png"
     }
   ]

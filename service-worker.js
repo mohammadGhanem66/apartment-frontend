@@ -1,3 +1,4 @@
+console.log("Service worker created");
 const CACHE_NAME = 'dashboard-cache-v2';
 const urlsToCache = [
   '/',
@@ -13,6 +14,7 @@ const urlsToCache = [
 
 // Install the service worker
 self.addEventListener('install', (event) => {
+  console.log("service worker start installing !!");
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {

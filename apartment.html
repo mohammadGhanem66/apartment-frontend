@@ -37,6 +37,42 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="css/bracket.css">
+    <style>
+.card {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%; /* Makes the table span the full width */
+    border-collapse: collapse;
+}
+
+thead th {
+    background-color: #f5f5f5; /* Light background for headers */
+    text-align: left;
+    padding: 10px;
+    border-bottom: 2px solid #ddd; /* Separate header visually */
+}
+
+tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left; /* Aligns all text consistently */
+}
+
+.card-footer {
+    text-align: right; /* Align footer elements to the right */
+}
+
+.collapse .form-layout {
+    background: #f9f9f9; /* Light background for forms */
+    padding: 15px;
+    border-radius: 5px;
+}
+
+    </style>
   </head>
 
   <body>
@@ -240,7 +276,7 @@
               <div class="card-header pd-20 bg-transparent">
                 <h4 class="card-title tx-uppercase tx-25 mg-b-0">الدفعات</h4>
               </div><!-- card-header -->
-              <table class="table table-responsive mg-b-0 tx-12" id="apartmentsTable">
+              <table class="table table-responsive w-100 mg-b-0 tx-12" id="apartmentsTable">
                 <thead>
                   <tr class="tx-10">
                     <th class="pd-y-5">قيمة الدفعة</th>
