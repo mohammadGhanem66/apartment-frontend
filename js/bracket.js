@@ -171,9 +171,6 @@
     $(this).toggleClass('checked');
   });
 
-  // peity charts
-  $('.peity-bar').peity('bar');
-
   // highlight syntax highlighter
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
