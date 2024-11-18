@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl" class="rtl">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>ابو الناجي للعقارات</title>
+
+    <!-- vendor css -->
+    <link href="lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+
+    <!-- Bracket CSS -->
+    <link rel="stylesheet" href="css/bracket.css">
+  </head>
+
+  <body>
+
+    <div class="d-flex align-items-center justify-content-center bg-br-primary ht-100v">
+
+      <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">
+        <div class="signin-logo tx-center tx-28 tx-bold tx-inverse"><span class="tx-normal">[</span> ابو الناجي <span class="tx-info">للعاقارات</span> <span class="tx-normal">]</span></div>
+    
+        <form id="loginForm">
+        <div class="form-group mt-4">
+          <input type="text" id="email"  class="form-control" placeholder="ادخل الايميل الخاص فيك">
+        </div><!-- form-group -->
+        <div class="form-group">
+          <input type="password" id="password" class="form-control" placeholder="ادخل كلمة المرور">
+         </div><!-- form-group -->
+        <button type="submit" class="btn btn-info btn-block">تسجيل الدخول</button>
+      </form>
+       </div><!-- login-wrapper -->
+    </div><!-- d-flex -->
+
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery-ui/ui/widgets/datepicker.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+</html>
+<script>
+    const loginForm = document.getElementById('loginForm');
+    const apiBaseUrl = 'https://apartman-service-production.up.railway.app';
+
+    // Handle form submission
+    loginForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      // Get email and password from the form
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        // Make the login API request
+        const response = await fetch(`${apiBaseUrl}/authentication/login`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          // Save the token in localStorage
+          localStorage.setItem('accessToken', data.accessToken);
+
+          // Redirect to the dashboard or another page
+          alert('تم تسجيل الدخول بنجاح');
+          window.location.href = '/index.html'; // Replace with your dashboard or target page
+        } else {
+          alert('بيانات تسجيل الدخول غير صحيحة');
+        }
+      } catch (error) {
+        console.error('حدث خطأ أثناء تسجيل الدخول:', error);
+        alert('تعذر تسجيل الدخول. يرجى المحاولة لاحقًا.');
+      }
+    });
+</script>

@@ -71,14 +71,56 @@ tbody td {
     padding: 15px;
     border-radius: 5px;
 }
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
 
+.card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+  font-weight: 600;
+}
+
+.tx-primary {
+  color: #007bff !important;
+}
+
+.tx-warning {
+  color: #ffc107 !important;
+}
+
+.tx-success {
+  color: #28a745 !important;
+}
+
+.tx-danger {
+  color: #dc3545 !important;
+}
+
+.tx-info {
+  color: #17a2b8 !important;
+}
     </style>
   </head>
 
   <body>
 
     <!-- ########## START: LEFT PANEL ########## -->
-    <div class="br-logo"><a href=""><span>[</span>bracket <i>plus</i><span>]</span></a></div>
+  <div class="br-logo"><a href=""><span>[</span>ابو الناجي <i> للعقارات</i><span>]</span></a></div>
   <div class="br-sideleft sideleft-scrollbar">
       <label class="sidebar-label pd-x-10 mg-t-20 op-3">القائمة</label>
       <ul class="br-sideleft-menu">
@@ -99,7 +141,7 @@ tbody td {
           <ul class="br-menu-sub">
             <li class="sub-item"><a href="building.html" class="sub-link active">العمارات</a></li>
             <li class="sub-item"><a href="apartment-create.html" class="sub-link">انشاء عمارة</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">التعديل على عمارة</a></li>
+        
           </ul>
         </li><!-- br-menu-item -->
         <li class="br-menu-item">
@@ -221,51 +263,75 @@ tbody td {
 
       <div class="br-pagebody pd-x-20 pd-sm-x-30">
       
- 
 
         <div class="row row-sm mg-t-20">
+          <!-- Building Location Card -->
           <div class="col-sm-6 col-lg-4">
-            <div class="card shadow-base bd-0">
-              <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
-                <h6 class="card-title tx-uppercase tx-12 mg-b-0">وصف العمارة</h6>
-                <span class="tx-12 tx-uppercase" id="Adescription"> </span>
-              </div><!-- card-header -->
-              <div class="card-body d-xs-flex justify-content-between align-items-center">
-                <h5 class="mg-b-0 tx-inverse tx-lato tx-bold">عدد الغرف</h5>
-                <p class="mg-b-0 tx-sm"><i class='fa fa-home tx-warning'></i> <span class="tx-warning"id ="AroomsCount"></span></p>
-              </div><!-- card-body -->
-            </div><!-- card -->
-          </div><!-- col-4 -->
-          <div class="col-sm-6 col-lg-4 mg-t-20 mg-sm-t-0">
-            <div class="card shadow-base bd-0">
-              <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
-                <h6 class="card-title tx-uppercase tx-12 mg-b-0">هل الشقة متاحة ؟</h6>
-				<p class="mg-b-0 tx-sm"><i class="fa fa-bars tx-success"></i> <span class="tx-success" id="AisAvaliable"></span></p>
-              </div><!-- card-header -->
-              <div class="card-body d-xs-flex justify-content-between align-items-center">
-                <h5 class="mg-b-0 tx-inverse tx-lato tx-bold"> قيمة الاجار الشهرية</h5>
-				<p class="mg-b-0 tx-sm"><i class="fa fa-gem tx-danger" aria-hidden="true"></i> <span class="tx-danger" id="ArentingValuePerMonth"></span></p>
-              </div><!-- card-body -->
-            </div><!-- card -->
-          </div><!-- col-4 -->
-          <!-- <div class="col-sm-6 col-lg-4 mg-t-20 mg-lg-t-0">
-            <div class="card shadow-base bd-0">
-              <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
-                <h6 class="card-title tx-uppercase tx-12 mg-b-0">قيمة الخدمات الشهرية </h6>
-                <p class="mg-b-0 tx-sm"><i class="fa fa-gem tx-danger" aria-hidden="true"></i> <span class="tx-danger" id="BtotalServices"> </span></p>
+            <div class="card shadow-base bd-0 border rounded-lg">
+              <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                  <i class="fa fa-map-marker-alt fa-3x text-primary"></i>
+                </div>
+                <h5 class="card-title text-uppercase tx-bold"> وصف الشقة</h5>
+                <p class="text-muted tx-14">الوصف: <span id="Adescription" class="tx-primary"></span></p>
               </div>
-              <div class="card-body d-xs-flex justify-content-between align-items-center">
-                <h4 class="mg-b-0 tx-inverse tx-lato tx-bold"></h4>
-                <p class="mg-b-0 tx-sm"></p>
+            </div>
+          </div>
+        
+          <!-- Number of Apartments Card -->
+          <div class="col-sm-6 col-lg-4">
+            <div class="card shadow-base bd-0 border rounded-lg">
+              <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                  <i class="fa fa-home fa-3x text-warning"></i>
+                </div>
+                <h5 class="card-title text-uppercase tx-bold"> عدد الغرف</h5>
+                <p class="text-muted tx-14">عدد الغرف: <span id="AroomsCount" class="tx-warning"></span></p>
               </div>
-            </div> 
-          </div>  -->
-        </div><!-- row -->
-
-      
+            </div>
+          </div>
+        
+          <!-- Number of Floors Card -->
+          <div class="col-sm-6 col-lg-4">
+            <div class="card shadow-base bd-0 border rounded-lg">
+              <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                  <i class="fa fa-building fa-3x text-success"></i>
+                </div>
+                <h5 class="card-title text-uppercase tx-bold">هل الشقة متاحة ؟</h5>
+                <p class="text-muted tx-14">هل متاحة؟: <span id="AisAvaliable" class="tx-success"></span></p>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Monthly Collection Card -->
+          <div class="col-sm-6 col-lg-6 mg-t-20">
+            <div class="card shadow-base bd-0 border rounded-lg">
+              <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                  <i class="fa fa-coins fa-3x text-danger"></i>
+                </div>
+                <h5 class="card-title text-uppercase tx-bold">قيمة الاجار الشهرية</h5>
+                <p class="text-muted tx-14">قيمة الاجار: <span id="ArentingValuePerMonth" class="tx-danger"></span></p>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Monthly Service Fee Card -->
+          <div class="col-sm-6 col-lg-6 mg-t-20">
+            <div class="card shadow-base bd-0 border rounded-lg">
+              <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                  <i class="fa fa-wrench fa-3x text-info"></i>
+                </div>
+                <h5 class="card-title text-uppercase tx-bold">قيمة الخدمات الشهرية</h5>
+                <p class="text-muted tx-14">Services Fee: <span id="BtotalServices" class="tx-info"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>    
 
      
- 
  
  
 
@@ -285,6 +351,7 @@ tbody td {
                     <th class="pd-y-5">نوع الدفعة  </th>
                     <th class="pd-y-5">رقم الشيك ان وجد</th>
                     <th class="pd-y-5">تاريخ استحقاق الشيك ان وجد </th>
+                    <th class="pd-y-5"> الملاحظات</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -505,6 +572,7 @@ tbody td {
             <td class="tx-warning">${payment.paymentType}</td>
             <td>${payment.chequeNumber ? payment.chequeNumber : '-'}</td>
             <td class="tx-danger">${payment.chequeDueDate ? payment.chequeDueDate.split('T')[0] : '-'}</td>
+            <td>${payment.notes}</td>
             `;
             paymentsTableBody.appendChild(row);
         });

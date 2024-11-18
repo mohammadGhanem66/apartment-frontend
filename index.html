@@ -51,7 +51,7 @@
   <body>
 
     <!-- ########## START: LEFT PANEL ########## -->
-    <div class="br-logo"><a href=""><span>[</span>Apratment <i>Sys</i><span>]</span></a></div>
+    <div class="br-logo"><a href=""><span>[</span>ابو الناجي <i> للعقارات</i><span>]</span></a></div>
     <div class="br-sideleft sideleft-scrollbar">
       <label class="sidebar-label pd-x-10 mg-t-20 op-3">القائمة</label>
       <ul class="br-sideleft-menu">
@@ -72,7 +72,6 @@
           <ul class="br-menu-sub">
             <li class="sub-item"><a href="building.html" class="sub-link">العمارات</a></li>
             <li class="sub-item"><a href="apartment-create.html" class="sub-link">انشاء عمارة</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">التعديل على عمارة</a></li>
           </ul>
         </li><!-- br-menu-item -->
         <li class="br-menu-item">
@@ -236,7 +235,6 @@
             </div>
           </div><!-- col-3 -->
         </div><!-- row -->
-        <a href="#" id="installBtn">Install App2</a>
         <div class="row row-sm mg-t-20">
           <div class="col-lg-12">
             <div class="card bd-0 shadow-base">
@@ -246,12 +244,10 @@
             <table class="table table-striped mg-b-0" id ="buildingsTable">
               <thead>
                 <tr>
-                  <th>رقم العمارة</th>
                   <th>اسم العمارة</th>
                   <th>عدد الشقق</th>
                   <th>مجموع التحصيل الشهري</th>
                   <th>قيمة الخدمات الشهرية</th>
-                  <th>اظهر معلومات العمارة</th>
                 </tr>
               </thead>
               <tbody>
@@ -338,12 +334,10 @@ function displayBuildings(buildings) {
   buildings.forEach(building => {
     const row = document.createElement('tr');
     row.innerHTML = `
-      <td>${building.id}</td>
-      <td>${building.name}</td>
+      <td style="cursor: pointer; font-weight: bold"><a href="building.html?id=${building.id}" class="view-details">${building.name}</a></td>
       <td>${building.apartmentCount}</td>
       <td>${building.monthlyRentPrice}</td>
-      <td>${building.monthlyFees}</td>
-      <td style="cursor: pointer; font-weight: bold"><a href="building.html?id=${building.id}" class="view-details">اظهر التفاصيل</a></td>
+      <td>${building.monthlyFees ? building.monthlyFees : 'لا يوجد'}</td>
     `;
     buildingsTableBody.appendChild(row);
   });

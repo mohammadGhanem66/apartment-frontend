@@ -88,7 +88,7 @@
   <body>
 
     <!-- ########## START: LEFT PANEL ########## -->
-    <div class="br-logo"><a href=""><span>[</span>bracket <i>plus</i><span>]</span></a></div>
+    <div class="br-logo"><a href=""><span>[</span>ابو الناجي <i> للعقارات</i><span>]</span></a></div>
   <div class="br-sideleft sideleft-scrollbar">
       <label class="sidebar-label pd-x-10 mg-t-20 op-3">القائمة</label>
       <ul class="br-sideleft-menu">
@@ -109,7 +109,6 @@
           <ul class="br-menu-sub">
             <li class="sub-item"><a href="building.html" class="sub-link active">العمارات</a></li>
             <li class="sub-item"><a href="apartment-create.html" class="sub-link">انشاء عمارة</a></li>
-            <li class="sub-item"><a href="#" class="sub-link">التعديل على عمارة</a></li>
           </ul>
         </li><!-- br-menu-item -->
         <li class="br-menu-item">
@@ -320,12 +319,11 @@
                   <tr class="tx-10">
                     <th class="wd-10p pd-y-5">&nbsp;</th>
                     <th class="pd-y-5">الاسم</th>
-                    <th class="pd-y-5 tx-right">الوصف</th>
                     <th class="pd-y-5">مبلغ التحصيل</th>
                     <th class="pd-y-5">العملة</th>
                     <th class="pd-y-5">مؤجرة ؟</th>
                     <th class="pd-y-5">عدد الغرف</th>
-                    <th class="pd-y-5">اظهر معلومات الشقة</th>
+                    <th class="pd-y-5 tx-right">الوصف</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -559,13 +557,12 @@
           const row = document.createElement('tr');
           row.innerHTML = `
             <td class="pd-l-20"><img src="https://via.placeholder.com/800x533" class="wd-55" alt="Image"></td>
-            <td><a href="" class="tx-inverse tx-14 tx-medium d-block">${apartment.name}</a></td>
-            <td>${apartment.description}</td>
+            <td style="cursor: pointer; font-weight: bold"><a href="apartment.html?id=${apartment.id}" class="view-details tx-14 tx-medium d-block">${apartment.name}</a></td>
             <td class="valign-middle"><span class="tx-success">${apartment.monthlyRentValue} </span></td>
             <td class="valign-middle">${apartment.currency}</td>
             <td class="valign-middle"><span class="tx-success tx-14 tx-${apartment.available ? 'success' : 'danger'}">${apartment.available ? 'متاح' : 'مؤجرة'}</span></td>
             <td class="valign-middle">${apartment.numberOfRooms}</td>
-            <td style="cursor: pointer; font-weight: bold"><a href="apartment.html?id=${apartment.id}" class="view-details">اظهر التفاصيل</a></td>
+            <td>${apartment.description}</td>
           `;
           apartmentsTableBody.appendChild(row);
         });
