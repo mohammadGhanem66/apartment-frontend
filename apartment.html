@@ -329,6 +329,115 @@ tbody td {
               </div>
             </div>
           </div>
+
+          <div class="col-sm-6 col-lg-6 mg-t-20"> <!-- Start of Edit card Div  -->
+            <div class="card shadow-base bd-0 border rounded-lg">
+              <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                  <i class="fa fa-edit fa-3x text-info"></i>
+                </div>
+                <a data-toggle="collapse" href="#collapseEditAppartment"  aria-expanded="false" aria-controls="collapseEditAppartment"><h5 class="card-title text-uppercase tx-bold"> <i class="fa fa-edit mg-r-5 tx-danger"></i>  التعديل على معلومات الشقة</h5></a>
+                <div class="collapse" id="collapseEditAppartment"> <!-- Start of collabs div  -->
+                  <div class="card card-body">
+                    <form class="form-layout form-layout-1" id="apartmentEditForm" enctype="multipart/form-data">
+                      <div class="row mg-b-25">
+                        <div class="col-lg-4">
+                          <div class="form-group">
+                            <label class="form-control-label">اسم الشقة <span class="tx-danger">*</span></label>
+                            <input class="form-control" type="number" id="appartmentNameEdit" name="appartmentNameEdit" required>
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="form-group">
+                            <label class="form-control-label"> وصف الشقة : </label>
+                            <input class="form-control" type="text" id="appartmentDescriptionEdit" name="appartmentDescriptionEdit">
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="form-group">
+                            <label class="form-control-label"> قيمة الاجار الشهرية: </label>
+                            <input class="form-control" type="text" id="appartmentMontylyRentEdit" name="appartmentMontylyRentEdit">
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="form-group">
+                            <label class="form-control-label"> قيمة الخدمات الشهرية: </label>
+                            <input class="form-control" type="text" id="appartmentServiceFeeEdit" name="appartmentServiceFeeEdit">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-layout-footer">
+                        <button class="btn btn-success" type="submit">تعديل</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>   <!-- End of collabs div  -->
+              
+
+              </div>
+            </div>
+          </div>  <!-- End of Edit card Div  -->
+
+          <div class="col-sm-6 col-lg-6 mg-t-20"> <!-- Start of Edit card Div  -->
+            <div class="card shadow-base bd-0 border rounded-lg">
+              <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                  <i class="fa fa-building fa-3x text-success"></i>
+                </div>
+                <a data-toggle="collapse" href="#collapseRentAppartment"  aria-expanded="false" aria-controls="collapseRentAppartment"><h5 class="card-title text-uppercase tx-bold"> <i class="fa fa-building mg-r-5 tx-success"></i>  تأجير الشقة</h5></a>
+                <div class="collapse" id="collapseRentAppartment"> <!-- Start of collabs div  -->
+                  <div class="card card-body">
+                    <form class="form-layout form-layout-1" id="apartmentEditForm" enctype="multipart/form-data">
+                      <div class="row mg-b-25">
+                        <div class="col-lg-4">
+                          <div class="form-group">
+                            <label class="form-control-label">اسم المستأجر<span class="tx-danger">*</span></label>
+                            <input class="form-control" type="number" id="rentingUserName" name="rentingUserName" required>
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="form-group">
+                            <label class="form-control-label"> رقم هاتف </label>
+                            <input class="form-control" type="text" id="rentingUserPhone" name="rentingUserPhone">
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="form-group">
+                            <label class="form-control-label"> رقم الهوية </label>
+                            <input class="form-control" type="text" id="rentingUserId" name="rentingUserId">
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="form-group">
+                            <label class="form-control-label"> قيمة الاجار الشهرية </label>
+                            <input class="form-control" type="text" id="rentingUserPay" name="rentingUserPay">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-layout-footer">
+                        <button class="btn btn-success" type="submit">تعديل</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>   <!-- End of collabs div  -->
+              
+
+              </div>
+            </div>
+          </div>  <!-- End of Edit card Div  -->
+
+          <div class="col-sm-12 col-lg-12 mg-t-20">
+            <div class="card shadow-base bd-0 border rounded-lg">
+              <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                  <i class="fa fa-times fa-3x text-danger"></i>
+                </div>
+                <h5 class="card-title text-uppercase tx-bold">ازالة المستأجر</h5>
+                <a href="#"><h5 class="card-title text-uppercase tx-bold"> <i class="fa fa-times mg-r-5 tx-danger"></i>  ازالة المستأجر من الشقة</h5></a>
+              </div>
+            </div>
+          </div>
+
         </div>    
 
      

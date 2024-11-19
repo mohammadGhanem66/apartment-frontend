@@ -317,12 +317,12 @@
               <table class="table table-responsive mg-b-0 tx-12" id="apartmentsTable">
                 <thead>
                   <tr class="tx-10">
-                    <th class="wd-10p pd-y-5">&nbsp;</th>
+                    <!-- <th class="wd-10p pd-y-5">&nbsp;</th> -->
                     <th class="pd-y-5">الاسم</th>
-                    <th class="pd-y-5">مبلغ التحصيل</th>
+                    <th class="pd-y-5">التحصيل</th>
                     <th class="pd-y-5">العملة</th>
-                    <th class="pd-y-5">مؤجرة ؟</th>
-                    <th class="pd-y-5">عدد الغرف</th>
+                    <th class="pd-y-5">مؤجرة</th>
+                    <th class="pd-y-5">الغرف</th>
                     <th class="pd-y-5 tx-right">الوصف</th>
                   </tr>
                 </thead>
@@ -555,8 +555,8 @@
 
         apartments.forEach(apartment => {
           const row = document.createElement('tr');
+          // <td class="pd-l-20"><img src="https://via.placeholder.com/800x533" class="wd-55" alt="Image"></td>
           row.innerHTML = `
-            <td class="pd-l-20"><img src="https://via.placeholder.com/800x533" class="wd-55" alt="Image"></td>
             <td style="cursor: pointer; font-weight: bold"><a href="apartment.html?id=${apartment.id}" class="view-details tx-14 tx-medium d-block">${apartment.name}</a></td>
             <td class="valign-middle"><span class="tx-success">${apartment.monthlyRentValue} </span></td>
             <td class="valign-middle">${apartment.currency}</td>
