@@ -1,6 +1,7 @@
 import { apiFetch } from './apiHelper.js';
 
 loadBuildings();
+loadStatistics();
 function loadBuildings() {
   const apiUrl = "https://apartman-service-production.up.railway.app/buildings/all";
 
@@ -28,4 +29,23 @@ function displayBuildings(buildings) {
     `;
     buildingsTableBody.appendChild(row);
   });
+}
+function loadStatistics() {
+  console.log("loadStatistics Function");
+  const apiUrl = "https://apartman-service-production.up.railway.app/statistics";
+
+  apiFetch(apiUrl)
+    .then(data => {
+      console.log(data);
+      displayStatistics(data);
+    })
+    .catch(error => {
+      console.error('There was an error!', error);
+    });
+}
+function displayStatistics(data){
+  document.getElementById('stat1').textContent = data.stat1;
+  document.getElementById('stat2').textContent = data.stat2;
+  document.getElementById('stat3').textContent = data.stat3;
+  document.getElementById('stat4').textContent = data.stat4;
 }

@@ -64,12 +64,10 @@
 
         if (response.ok) {
           const data = await response.json();
-          // Save the token in localStorage
           localStorage.setItem('accessToken', data.accessToken);
 
-          // Redirect to the dashboard or another page
           alert('تم تسجيل الدخول بنجاح');
-          window.location.href = '/index.html'; // Replace with your dashboard or target page
+          window.location.href = '/index.html';
         } else {
           alert('بيانات تسجيل الدخول غير صحيحة');
         }
