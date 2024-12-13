@@ -1,141 +1,141 @@
 $(function(){
   'use strict'
 
-  var ch1 = new Rickshaw.Graph({
-    element: document.querySelector('#ch1'),
-    renderer: 'area',
-    max: 80,
-    series: [{
-      data: [
-        { x: 0, y: 40 },
-        { x: 1, y: 49 },
-        { x: 2, y: 38 },
-        { x: 3, y: 30 },
-        { x: 4, y: 32 },
-        { x: 5, y: 40 },
-        { x: 6, y: 20 },
-        { x: 7, y: 10 },
-        { x: 8, y: 20 },
-        { x: 9, y: 25 },
-        { x: 10, y: 35 },
-        { x: 11, y: 20 },
-        { x: 12, y: 40 }
-      ],
-      color: 'rgba(255,255,255,0.5)'
-    }]
-  });
-  ch1.render();
+  // var ch1 = new Rickshaw.Graph({
+  //   element: document.querySelector('#ch1'),
+  //   renderer: 'area',
+  //   max: 80,
+  //   series: [{
+  //     data: [
+  //       { x: 0, y: 40 },
+  //       { x: 1, y: 49 },
+  //       { x: 2, y: 38 },
+  //       { x: 3, y: 30 },
+  //       { x: 4, y: 32 },
+  //       { x: 5, y: 40 },
+  //       { x: 6, y: 20 },
+  //       { x: 7, y: 10 },
+  //       { x: 8, y: 20 },
+  //       { x: 9, y: 25 },
+  //       { x: 10, y: 35 },
+  //       { x: 11, y: 20 },
+  //       { x: 12, y: 40 }
+  //     ],
+  //     color: 'rgba(255,255,255,0.5)'
+  //   }]
+  // });
+  // ch1.render();
 
-  // Responsive Mode
-  new ResizeSensor($('.br-mainpanel'), function(){
-    ch1.configure({
-      width: $('#ch1').width(),
-      height: $('#ch1').height()
-    });
-    ch1.render();
-  });
+  // // Responsive Mode
+  // new ResizeSensor($('.br-mainpanel'), function(){
+  //   ch1.configure({
+  //     width: $('#ch1').width(),
+  //     height: $('#ch1').height()
+  //   });
+  //   ch1.render();
+  // });
 
-  var ch2 = new Rickshaw.Graph({
-    element: document.querySelector('#ch2'),
-    renderer: 'area',
-    max: 80,
-    series: [{
-      data: [
-        { x: 0, y: 40 },
-        { x: 1, y: 15 },
-        { x: 2, y: 38 },
-        { x: 3, y: 40 },
-        { x: 4, y: 32 },
-        { x: 5, y: 50 },
-        { x: 6, y: 65 },
-        { x: 7, y: 70 },
-        { x: 8, y: 45 },
-        { x: 9, y: 55 },
-        { x: 10, y: 60 },
-        { x: 11, y: 50 },
-        { x: 12, y: 40 }
-      ],
-      color: 'rgba(255,255,255,0.5)'
-    }]
-  });
-  ch2.render();
+  // var ch2 = new Rickshaw.Graph({
+  //   element: document.querySelector('#ch2'),
+  //   renderer: 'area',
+  //   max: 80,
+  //   series: [{
+  //     data: [
+  //       { x: 0, y: 40 },
+  //       { x: 1, y: 15 },
+  //       { x: 2, y: 38 },
+  //       { x: 3, y: 40 },
+  //       { x: 4, y: 32 },
+  //       { x: 5, y: 50 },
+  //       { x: 6, y: 65 },
+  //       { x: 7, y: 70 },
+  //       { x: 8, y: 45 },
+  //       { x: 9, y: 55 },
+  //       { x: 10, y: 60 },
+  //       { x: 11, y: 50 },
+  //       { x: 12, y: 40 }
+  //     ],
+  //     color: 'rgba(255,255,255,0.5)'
+  //   }]
+  // });
+  // ch2.render();
 
-  // Responsive Mode
-  new ResizeSensor($('.br-mainpanel'), function(){
-    ch2.configure({
-      width: $('#ch2').width(),
-      height: $('#ch2').height()
-    });
-    ch2.render();
-  });
+  // // Responsive Mode
+  // new ResizeSensor($('.br-mainpanel'), function(){
+  //   ch2.configure({
+  //     width: $('#ch2').width(),
+  //     height: $('#ch2').height()
+  //   });
+  //   ch2.render();
+  // });
 
-  var ch3 = new Rickshaw.Graph({
-    element: document.querySelector('#ch3'),
-    renderer: 'area',
-    max: 80,
-    series: [{
-      data: [
-        { x: 0, y: 40 },
-        { x: 1, y: 45 },
-        { x: 2, y: 30 },
-        { x: 3, y: 40 },
-        { x: 4, y: 50 },
-        { x: 5, y: 40 },
-        { x: 6, y: 20 },
-        { x: 7, y: 10 },
-        { x: 8, y: 20 },
-        { x: 9, y: 25 },
-        { x: 10, y: 35 },
-        { x: 11, y: 20 },
-        { x: 12, y: 40 }
-      ],
-      color: 'rgba(255,255,255,0.5)'
-    }]
-  });
-  ch3.render();
+  // var ch3 = new Rickshaw.Graph({
+  //   element: document.querySelector('#ch3'),
+  //   renderer: 'area',
+  //   max: 80,
+  //   series: [{
+  //     data: [
+  //       { x: 0, y: 40 },
+  //       { x: 1, y: 45 },
+  //       { x: 2, y: 30 },
+  //       { x: 3, y: 40 },
+  //       { x: 4, y: 50 },
+  //       { x: 5, y: 40 },
+  //       { x: 6, y: 20 },
+  //       { x: 7, y: 10 },
+  //       { x: 8, y: 20 },
+  //       { x: 9, y: 25 },
+  //       { x: 10, y: 35 },
+  //       { x: 11, y: 20 },
+  //       { x: 12, y: 40 }
+  //     ],
+  //     color: 'rgba(255,255,255,0.5)'
+  //   }]
+  // });
+  // ch3.render();
 
-  // Responsive Mode
-  new ResizeSensor($('.br-mainpanel'), function(){
-    ch3.configure({
-      width: $('#ch3').width(),
-      height: $('#ch3').height()
-    });
-    ch3.render();
-  });
+  // // Responsive Mode
+  // new ResizeSensor($('.br-mainpanel'), function(){
+  //   ch3.configure({
+  //     width: $('#ch3').width(),
+  //     height: $('#ch3').height()
+  //   });
+  //   ch3.render();
+  // });
 
-  var ch4 = new Rickshaw.Graph({
-    element: document.querySelector('#ch4'),
-    renderer: 'area',
-    max: 80,
-    series: [{
-      data: [
-        { x: 0, y: 40 },
-        { x: 1, y: 45 },
-        { x: 2, y: 30 },
-        { x: 3, y: 40 },
-        { x: 4, y: 50 },
-        { x: 5, y: 40 },
-        { x: 6, y: 20 },
-        { x: 7, y: 10 },
-        { x: 8, y: 20 },
-        { x: 9, y: 25 },
-        { x: 10, y: 35 },
-        { x: 11, y: 20 },
-        { x: 12, y: 40 }
-      ],
-      color: 'rgba(255,255,255,0.5)'
-    }]
-  });
-  ch4.render();
+  // var ch4 = new Rickshaw.Graph({
+  //   element: document.querySelector('#ch4'),
+  //   renderer: 'area',
+  //   max: 80,
+  //   series: [{
+  //     data: [
+  //       { x: 0, y: 40 },
+  //       { x: 1, y: 45 },
+  //       { x: 2, y: 30 },
+  //       { x: 3, y: 40 },
+  //       { x: 4, y: 50 },
+  //       { x: 5, y: 40 },
+  //       { x: 6, y: 20 },
+  //       { x: 7, y: 10 },
+  //       { x: 8, y: 20 },
+  //       { x: 9, y: 25 },
+  //       { x: 10, y: 35 },
+  //       { x: 11, y: 20 },
+  //       { x: 12, y: 40 }
+  //     ],
+  //     color: 'rgba(255,255,255,0.5)'
+  //   }]
+  // });
+  // ch4.render();
 
-  // Responsive Mode
-  new ResizeSensor($('.br-mainpanel'), function(){
-    ch4.configure({
-      width: $('#ch4').width(),
-      height: $('#ch4').height()
-    });
-    ch4.render();
-  });
+  // // Responsive Mode
+  // new ResizeSensor($('.br-mainpanel'), function(){
+  //   ch4.configure({
+  //     width: $('#ch4').width(),
+  //     height: $('#ch4').height()
+  //   });
+  //   ch4.render();
+  // });
 
 
 
@@ -195,132 +195,132 @@ $(function(){
     }
   });
 
-  var ch6 = new Rickshaw.Graph({
-    element: document.querySelector('#ch6'),
-    renderer: 'area',
-    max: 50,
-    series: [{
-      data: [
-        { x: 0, y: 40 },
-        { x: 1, y: 49 },
-        { x: 2, y: 38 },
-        { x: 3, y: 30 },
-        { x: 4, y: 32 },
-        { x: 5, y: 40 },
-        { x: 6, y: 20 },
-        { x: 7, y: 10 },
-        { x: 8, y: 20 },
-        { x: 9, y: 25 },
-        { x: 10, y: 35 },
-        { x: 11, y: 20 },
-        { x: 12, y: 40 }
-      ],
-      color: '#1CAF9A'
-    }]
-  });
-  ch6.render();
+  // var ch6 = new Rickshaw.Graph({
+  //   element: document.querySelector('#ch6'),
+  //   renderer: 'area',
+  //   max: 50,
+  //   series: [{
+  //     data: [
+  //       { x: 0, y: 40 },
+  //       { x: 1, y: 49 },
+  //       { x: 2, y: 38 },
+  //       { x: 3, y: 30 },
+  //       { x: 4, y: 32 },
+  //       { x: 5, y: 40 },
+  //       { x: 6, y: 20 },
+  //       { x: 7, y: 10 },
+  //       { x: 8, y: 20 },
+  //       { x: 9, y: 25 },
+  //       { x: 10, y: 35 },
+  //       { x: 11, y: 20 },
+  //       { x: 12, y: 40 }
+  //     ],
+  //     color: '#1CAF9A'
+  //   }]
+  // });
+  // ch6.render();
 
-  // Responsive Mode
-  new ResizeSensor($('.br-mainpanel'), function(){
-    ch6.configure({
-      width: $('#ch6').width(),
-      height: $('#ch6').height()
-    });
-    ch6.render();
-  });
+  // // Responsive Mode
+  // new ResizeSensor($('.br-mainpanel'), function(){
+  //   ch6.configure({
+  //     width: $('#ch6').width(),
+  //     height: $('#ch6').height()
+  //   });
+  //   ch6.render();
+  // });
 
 
-  $('#ch7').sparkline('html', {
-    type: 'bar',
-    barWidth: 10,
-    height: 70,
-    barColor: '#17A2B8',
-    chartRangeMax: 12
-  });
+  // $('#ch7').sparkline('html', {
+  //   type: 'bar',
+  //   barWidth: 10,
+  //   height: 70,
+  //   barColor: '#17A2B8',
+  //   chartRangeMax: 12
+  // });
 
-  $('#ch8').sparkline('html', {
-    type: 'bar',
-    barWidth: 10,
-    height: 70,
-    barColor: '#20C997',
-    chartRangeMax: 12
-  });
+  // $('#ch8').sparkline('html', {
+  //   type: 'bar',
+  //   barWidth: 10,
+  //   height: 70,
+  //   barColor: '#20C997',
+  //   chartRangeMax: 12
+  // });
 
-  $('#ch9').sparkline('html', {
-    type: 'bar',
-    barWidth: 10,
-    height: 70,
-    barColor: '#3A4293',
-    chartRangeMax: 12
-  });
+  // $('#ch9').sparkline('html', {
+  //   type: 'bar',
+  //   barWidth: 10,
+  //   height: 70,
+  //   barColor: '#3A4293',
+  //   chartRangeMax: 12
+  // });
 
-  var ch10 = new Rickshaw.Graph({
-    element: document.querySelector('#ch10'),
-    renderer: 'bar',
-    max: 50,
-    series: [{
-      data: [
-        { x: 0, y: 40 },
-        { x: 1, y: 49 },
-        { x: 2, y: 38 },
-        { x: 3, y: 30 },
-        { x: 4, y: 32 },
-        { x: 5, y: 40 },
-        { x: 6, y: 20 },
-        { x: 7, y: 10 },
-        { x: 8, y: 20 },
-        { x: 9, y: 25 },
-        { x: 10, y: 35 },
-        { x: 11, y: 20 },
-        { x: 12, y: 35 }
-      ],
-      color: '#6F42C1'
-    }]
-  });
-  ch10.render();
+  // var ch10 = new Rickshaw.Graph({
+  //   element: document.querySelector('#ch10'),
+  //   renderer: 'bar',
+  //   max: 50,
+  //   series: [{
+  //     data: [
+  //       { x: 0, y: 40 },
+  //       { x: 1, y: 49 },
+  //       { x: 2, y: 38 },
+  //       { x: 3, y: 30 },
+  //       { x: 4, y: 32 },
+  //       { x: 5, y: 40 },
+  //       { x: 6, y: 20 },
+  //       { x: 7, y: 10 },
+  //       { x: 8, y: 20 },
+  //       { x: 9, y: 25 },
+  //       { x: 10, y: 35 },
+  //       { x: 11, y: 20 },
+  //       { x: 12, y: 35 }
+  //     ],
+  //     color: '#6F42C1'
+  //   }]
+  // });
+  // ch10.render();
 
-  // Responsive Mode
-  new ResizeSensor($('.br-mainpanel'), function(){
-    ch10.configure({
-      width: $('#ch10').width(),
-      height: $('#ch10').height()
-    });
-    ch10.render();
-  });
+  // // Responsive Mode
+  // new ResizeSensor($('.br-mainpanel'), function(){
+  //   ch10.configure({
+  //     width: $('#ch10').width(),
+  //     height: $('#ch10').height()
+  //   });
+  //   ch10.render();
+  // });
 
-  var ch11 = new Rickshaw.Graph({
-    element: document.querySelector('#ch11'),
-    renderer: 'bar',
-    max: 50,
-    series: [{
-      data: [
-        { x: 0, y: 35 },
-        { x: 1, y: 49 },
-        { x: 2, y: 38 },
-        { x: 3, y: 30 },
-        { x: 4, y: 32 },
-        { x: 5, y: 40 },
-        { x: 6, y: 20 },
-        { x: 7, y: 10 },
-        { x: 8, y: 20 },
-        { x: 9, y: 25 },
-        { x: 10, y: 35 },
-        { x: 11, y: 20 },
-        { x: 12, y: 40 }
-      ],
-      color: '#6F42C1'
-    }]
-  });
-  ch11.render();
+  // var ch11 = new Rickshaw.Graph({
+  //   element: document.querySelector('#ch11'),
+  //   renderer: 'bar',
+  //   max: 50,
+  //   series: [{
+  //     data: [
+  //       { x: 0, y: 35 },
+  //       { x: 1, y: 49 },
+  //       { x: 2, y: 38 },
+  //       { x: 3, y: 30 },
+  //       { x: 4, y: 32 },
+  //       { x: 5, y: 40 },
+  //       { x: 6, y: 20 },
+  //       { x: 7, y: 10 },
+  //       { x: 8, y: 20 },
+  //       { x: 9, y: 25 },
+  //       { x: 10, y: 35 },
+  //       { x: 11, y: 20 },
+  //       { x: 12, y: 40 }
+  //     ],
+  //     color: '#6F42C1'
+  //   }]
+  // });
+  // ch11.render();
 
-  // Responsive Mode
-  new ResizeSensor($('.br-mainpanel'), function(){
-    ch11.configure({
-      width: $('#ch11').width(),
-      height: $('#ch11').height()
-    });
-    ch11.render();
-  });
+  // // Responsive Mode
+  // new ResizeSensor($('.br-mainpanel'), function(){
+  //   ch11.configure({
+  //     width: $('#ch11').width(),
+  //     height: $('#ch11').height()
+  //   });
+  //   ch11.render();
+  // });
 
   // Horizontal bar chart
   var ch12data = [
@@ -385,42 +385,42 @@ $(function(){
     ch12.resize();
   });
 
-  var ch13 = new Rickshaw.Graph({
-    element: document.querySelector('#ch13'),
-    renderer: 'bar',
-    stack: false,
-    max: 60,
-    series: [{
-      data: [
-        { x: 0, y: 20 },
-        { x: 1, y: 25 },
-        { x: 2, y: 10 },
-        { x: 3, y: 15 },
-        { x: 4, y: 20 },
-        { x: 5, y: 40 },
-        { x: 6, y: 15 },
-        { x: 7, y: 40 },
-        { x: 8, y: 25 }
-      ],
-      color: '#f25766'
-    },
-    {
-      data: [
-        { x: 0, y: 10 },
-        { x: 1, y: 30 },
-        { x: 2, y: 45 },
-        { x: 3, y: 30 },
-        { x: 4, y: 42 },
-        { x: 5, y: 20 },
-        { x: 6, y: 30 },
-        { x: 7, y: 15 },
-        { x: 8, y: 20 }
-      ],
-      color: '#aa2531'
-    }]
-  });
+  // var ch13 = new Rickshaw.Graph({
+  //   element: document.querySelector('#ch13'),
+  //   renderer: 'bar',
+  //   stack: false,
+  //   max: 60,
+  //   series: [{
+  //     data: [
+  //       { x: 0, y: 20 },
+  //       { x: 1, y: 25 },
+  //       { x: 2, y: 10 },
+  //       { x: 3, y: 15 },
+  //       { x: 4, y: 20 },
+  //       { x: 5, y: 40 },
+  //       { x: 6, y: 15 },
+  //       { x: 7, y: 40 },
+  //       { x: 8, y: 25 }
+  //     ],
+  //     color: '#f25766'
+  //   },
+  //   {
+  //     data: [
+  //       { x: 0, y: 10 },
+  //       { x: 1, y: 30 },
+  //       { x: 2, y: 45 },
+  //       { x: 3, y: 30 },
+  //       { x: 4, y: 42 },
+  //       { x: 5, y: 20 },
+  //       { x: 6, y: 30 },
+  //       { x: 7, y: 15 },
+  //       { x: 8, y: 20 }
+  //     ],
+  //     color: '#aa2531'
+  //   }]
+  // });
 
-  ch13.render();
+  // ch13.render();
 
   // Responsive Mode
   new ResizeSensor($('.br-mainpanel'), function(){

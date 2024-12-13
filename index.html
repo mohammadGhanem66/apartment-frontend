@@ -284,53 +284,66 @@
     <script src="js/bracket.js"></script>
     <!-- <script src="js/map.shiftworker.js"></script> -->
     <!-- <script src="js/ResizeSensor.js"></script> -->
-    <script src="js/dashboard.js"></script>
+    <!-- <script src="js/dashboard.js"></script> -->
+    <script type="module" src="javascript/index.js"></script>
 
   </body>
 </html>
 <script>
-loadBuildings();
-function loadBuildings() {
-  // API URL
-  const apiUrl = "https://apartman-service-production.up.railway.app/buildings/all";
+// import { apiFetch } from './apiHelper.js';
+//loadBuildings();
+// function loadBuildings() {
+//   // API URL
+//   const apiUrl = "https://apartman-service-production.up.railway.app/buildings/all";
 
-  fetch(apiUrl, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw',
-    }
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log(data);
-    displayBuildings(data); 
-  })
-  .catch(error => {
-    console.error('There was an error!', error);
-  });
-}
+//   fetch(apiUrl, {
+//     method: 'GET',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw',
+//     }
+//   })
+//   .then(response => {
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! Status: ${response.status}`);
+//     }
+//     return response.json();
+//   })
+//   .then(data => {
+//     console.log(data);
+//     displayBuildings(data); 
+//   })
+//   .catch(error => {
+//     console.error('There was an error!', error);
+//   });
+// }
+// function loadBuildings() {
+//   const apiUrl = "https://apartman-service-production.up.railway.app/buildings/all";
 
-// Function to display buildings in the DOM
-function displayBuildings(buildings) {
-  const buildingsTableBody = document.querySelector('#buildingsTable tbody');
-  buildingsTableBody.innerHTML = '';
+//   apiFetch(apiUrl)
+//     .then(data => {
+//       console.log(data);
+//       displayBuildings(data);
+//     })
+//     .catch(error => {
+//       console.error('There was an error!', error);
+//     });
+// }
+// // Function to display buildings in the DOM
+// function displayBuildings(buildings) {
+//   const buildingsTableBody = document.querySelector('#buildingsTable tbody');
+//   buildingsTableBody.innerHTML = '';
 
-  buildings.forEach(building => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td style="cursor: pointer; font-weight: bold"><a href="building.html?id=${building.id}" class="view-details">${building.name}</a></td>
-      <td>${building.apartmentCount}</td>
-      <td>${building.monthlyRentPrice}</td>
-      <td>${building.monthlyFees ? building.monthlyFees : 'لا يوجد'}</td>
-    `;
-    buildingsTableBody.appendChild(row);
-  });
-}
+//   buildings.forEach(building => {
+//     const row = document.createElement('tr');
+//     row.innerHTML = `
+//       <td style="cursor: pointer; font-weight: bold"><a href="building.html?id=${building.id}" class="view-details">${building.name}</a></td>
+//       <td>${building.apartmentCount}</td>
+//       <td>${building.monthlyRentPrice}</td>
+//       <td>${building.monthlyFees ? building.monthlyFees : 'لا يوجد'}</td>
+//     `;
+//     buildingsTableBody.appendChild(row);
+//   });
+// }
 
 </script>
