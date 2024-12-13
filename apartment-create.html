@@ -41,7 +41,6 @@
             <span class="menu-item-label">العمارات</span>
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">
-            <li class="sub-item"><a href="#" class="sub-link">العمارات</a></li>
             <li class="sub-item"><a href="#" class="sub-link active">انشاء عمارة</a></li>
           </ul>
         </li><!-- br-menu-item -->
@@ -148,10 +147,7 @@
     <div class="br-mainpanel">
 
       <div class="br-pagetitle">
-        <i class="icon ion-ios-gear-outline"></i>
-        <div>
-          <h4>انشاء عمارة</h4>
-        </div>
+      
       </div><!-- d-flex -->
 
       <div class="br-pagebody">
@@ -277,7 +273,10 @@
       $.ajax({
         url: 'https://apartman-service-production.up.railway.app/buildings',
         type: 'POST',
-        contentType: 'application/json',
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODUzNzc2LCJleHAiOjE3MzM0NDU3NzZ9.K_lxTaFLS8ytrtM3HVsTCL1evEKCAATpMhS0PulUCy8`
+        },
         data: JSON.stringify({
           "name": $('#name').val(),
           "address": $('#address').val(),

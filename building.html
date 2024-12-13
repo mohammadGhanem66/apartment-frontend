@@ -107,12 +107,8 @@
             <span class="menu-item-label">العمارات</span>
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">
-            <li class="sub-item"><a href="building.html" class="sub-link active">العمارات</a></li>
             <li class="sub-item"><a href="apartment-create.html" class="sub-link">انشاء عمارة</a></li>
           </ul>
-        </li><!-- br-menu-item -->
-        <li class="br-menu-item">
-          <a href="#" id="installLink">Install App</a>
         </li><!-- br-menu-item -->
 
       </ul><!-- br-sideleft-menu -->
@@ -221,8 +217,8 @@
     <!-- ########## START: MAIN PANEL ########## -->
     <div class="br-mainpanel">
  
-      <div class="br-pagetitle">
-        <i class="icon icon ion-ios-photos"></i>
+      <div class="br-pagetitle d-flex justify-content-center">
+      
         <div>
           <h4 id="Bname"></h4>
          </div>
@@ -230,83 +226,6 @@
 
       <div class="br-pagebody pd-x-20 pd-sm-x-30">
       
- 
-
-        <div class="row row-sm mg-t-20">
-          <!-- Building Location Card -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="card shadow-base bd-0 border rounded-lg">
-              <div class="card-body text-center">
-                <div class="icon-container mb-3">
-                  <i class="fa fa-map-marker-alt fa-3x text-primary"></i>
-                </div>
-                <h5 class="card-title text-uppercase tx-bold">مكان العمارة</h5>
-                <p class="text-muted tx-14">Location: <span id="Blocation" class="tx-primary"></span></p>
-              </div>
-            </div>
-          </div>
-        
-          <!-- Number of Apartments Card -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="card shadow-base bd-0 border rounded-lg">
-              <div class="card-body text-center">
-                <div class="icon-container mb-3">
-                  <i class="fa fa-home fa-3x text-warning"></i>
-                </div>
-                <h5 class="card-title text-uppercase tx-bold">عدد الشقق</h5>
-                <p class="text-muted tx-14">Apartments: <span id="BroomsCount" class="tx-warning"></span></p>
-              </div>
-            </div>
-          </div>
-        
-          <!-- Number of Floors Card -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="card shadow-base bd-0 border rounded-lg">
-              <div class="card-body text-center">
-                <div class="icon-container mb-3">
-                  <i class="fa fa-building fa-3x text-success"></i>
-                </div>
-                <h5 class="card-title text-uppercase tx-bold">عدد الطوابق</h5>
-                <p class="text-muted tx-14">Floors: <span id="BfloorsCount" class="tx-success"></span></p>
-              </div>
-            </div>
-          </div>
-        
-          <!-- Monthly Collection Card -->
-          <div class="col-sm-6 col-lg-6 mg-t-20">
-            <div class="card shadow-base bd-0 border rounded-lg">
-              <div class="card-body text-center">
-                <div class="icon-container mb-3">
-                  <i class="fa fa-coins fa-3x text-danger"></i>
-                </div>
-                <h5 class="card-title text-uppercase tx-bold">التحصيل الشهري</h5>
-                <p class="text-muted tx-14">Collection: <span id="BtotalCollection" class="tx-danger"></span></p>
-              </div>
-            </div>
-          </div>
-        
-          <!-- Monthly Service Fee Card -->
-          <div class="col-sm-6 col-lg-6 mg-t-20">
-            <div class="card shadow-base bd-0 border rounded-lg">
-              <div class="card-body text-center">
-                <div class="icon-container mb-3">
-                  <i class="fa fa-wrench fa-3x text-info"></i>
-                </div>
-                <h5 class="card-title text-uppercase tx-bold">قيمة الخدمات الشهرية</h5>
-                <p class="text-muted tx-14">Services Fee: <span id="BtotalServices" class="tx-info"></span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-
-      
-
-     
- 
- 
- 
-
         <div class="row row-sm mg-t-20">
  
           <div class="col-lg-12 mg-t-20 mg-lg-t-0">
@@ -438,7 +357,73 @@
           </div><!-- col-6 -->
         </div><!-- row -->
 
-       
+        <div class="row row-sm mg-t-20"> <!-- Information Cards Start-->
+          <!-- Building Location Card -->
+          <div class="col-sm-6 col-lg-4">
+            <div class="card shadow-base bd-0 border rounded-lg">
+              <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                  <i class="fa fa-map-marker-alt fa-3x text-primary"></i>
+                </div>
+                <h5 class="card-title text-uppercase tx-bold">مكان العمارة</h5>
+                <p class="text-muted tx-14"><span id="Blocation" class="tx-primary"></span></p>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Number of Apartments Card -->
+          <div class="col-sm-6 col-lg-4">
+            <div class="card shadow-base bd-0 border rounded-lg">
+              <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                  <i class="fa fa-home fa-3x text-warning"></i>
+                </div>
+                <h5 class="card-title text-uppercase tx-bold">عدد الشقق</h5>
+                <p class="text-muted tx-14"> <span id="BroomsCount" class="tx-warning"></span></p>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Number of Floors Card -->
+          <div class="col-sm-6 col-lg-4">
+            <div class="card shadow-base bd-0 border rounded-lg">
+              <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                  <i class="fa fa-building fa-3x text-success"></i>
+                </div>
+                <h5 class="card-title text-uppercase tx-bold">عدد الطوابق</h5>
+                <p class="text-muted tx-14"> <span id="BfloorsCount" class="tx-success"></span></p>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Monthly Collection Card -->
+          <div class="col-sm-6 col-lg-6 mg-t-20">
+            <div class="card shadow-base bd-0 border rounded-lg">
+              <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                  <i class="fa fa-coins fa-3x text-danger"></i>
+                </div>
+                <h5 class="card-title text-uppercase tx-bold">التحصيل الشهري</h5>
+                <p class="text-muted tx-14"> <span id="BtotalCollection" class="tx-danger"></span></p>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Monthly Service Fee Card -->
+          <div class="col-sm-6 col-lg-6 mg-t-20">
+            <div class="card shadow-base bd-0 border rounded-lg">
+              <div class="card-body text-center">
+                <div class="icon-container mb-3">
+                  <i class="fa fa-wrench fa-3x text-info"></i>
+                </div>
+                <h5 class="card-title text-uppercase tx-bold">قيمة الخدمات الشهرية</h5>
+                <p class="text-muted tx-14"> <span id="BtotalServices" class="tx-info"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>  <!-- Information Cards Ends-->
+        
       </div><!-- br-pagebody -->
 
       <footer class="br-footer">
@@ -519,7 +504,7 @@
         .then(data => {
             // Step 3: Display building details
             // document.getElementById('building-id').textContent = data.id;
-            document.getElementById('Bname').textContent ="عمارة "+ data.name;
+            document.getElementById('Bname').textContent = data.name;
             document.getElementById('Blocation').textContent = data.address;
             document.getElementById('BroomsCount').textContent = data.apartmentCount;
             document.getElementById('BfloorsCount').textContent = data.floorsCount;
@@ -601,7 +586,7 @@
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODUzNzc2LCJleHAiOjE3MzM0NDU3NzZ9.K_lxTaFLS8ytrtM3HVsTCL1evEKCAATpMhS0PulUCy8`
       },
       body: JSON.stringify(apartmentData)
     })

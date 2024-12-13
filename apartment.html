@@ -139,15 +139,10 @@ tbody td {
             <span class="menu-item-label">العمارات</span>
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">
-            <li class="sub-item"><a href="building.html" class="sub-link active">العمارات</a></li>
             <li class="sub-item"><a href="apartment-create.html" class="sub-link">انشاء عمارة</a></li>
         
           </ul>
         </li><!-- br-menu-item -->
-        <li class="br-menu-item">
-          <a href="#" id="installLink">Install App</a>
-        </li><!-- br-menu-item -->
-
       </ul><!-- br-sideleft-menu -->
 
     </div><!-- br-sideleft -->
@@ -254,17 +249,127 @@ tbody td {
     <!-- ########## START: MAIN PANEL ########## -->
     <div class="br-mainpanel">
  
-      <div class="br-pagetitle">
-        <i class="icon icon ion-ios-photos"></i>
-        <div>
+      <div class="br-pagetitle d-flex justify-content-center">
+         <div>
           <h4 id="Aname"></h4>
          </div>
       </div><!-- d-flex -->
 
       <div class="br-pagebody pd-x-20 pd-sm-x-30">
       
-
         <div class="row row-sm mg-t-20">
+ 
+          <div class="col-lg-12 mg-t-20 mg-lg-t-0">
+            <div class="card shadow-base bd-0">
+              <div class="card-header pd-20 bg-transparent">
+                <h4 class="card-title tx-uppercase tx-25 mg-b-0">الدفعات</h4>
+              </div><!-- card-header -->
+              <!-- Add Payment Button -->
+            <div class="card-footer tx-12 pd-y-15 bg-transparent">
+              <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" class="tx-15 tx-warning tx-bold">
+                <i class="fa fa-edit mg-r-5 tx-danger"></i> أضافة دفعة جديدة
+              </a>
+            </div>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <form class="form-layout form-layout-1" id="paymentForm" enctype="multipart/form-data">
+                  <div class="row mg-b-25">
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label">  قيمة الدفعة: <span class="tx-danger">*</span></label>
+                        <input class="form-control" type="number" id="paymentValue" name="paymentValue" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label"> الشهر: <span class="tx-danger">*</span></label>
+                        <select class="custom-select" id="month" name="month"required>
+                          <option selected value="">اختر...</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label"> طريقة الدفع: <span class="tx-danger">*</span></label>
+                        <select class="custom-select" onchange="checkPaymentType()" id="paymentType" name="paymentType"required>
+                          <option selected value="">اختر...</option>
+                          <option value="CASH">Cash</option>
+                          <option value="CHEQUE">Cheque</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label"> الملاحظات : </label>
+                        <input class="form-control" type="text" id="notes" name="notes">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label"> العملة: <span class="tx-danger">*</span></label>
+                        <select class="custom-select" id="currency" name="currency"required>
+                          <option selected value="">اختر...</option>
+                          <option value="NIS">شيكل</option>
+                          <option value="JOD">دينار اردني</option>
+                          <option value="USD">دولار امريكي</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" id="labelchequeNumber"> رقم الشيك : </label>
+                        <input class="form-control" type="number" id="chequeNumber" name="chequeNumber">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" id="labelchequeDueDate"> تاريخ الشيك : </label>
+                        <input class="form-control" type="date" id="chequeDueDate" name="chequeDueDate">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="form-layout-footer">
+                    <button class="btn btn-success" type="submit">انشاء</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            
+              <table class="table table-responsive w-100 mg-b-0 tx-12" id="apartmentsTable">
+                <thead>
+                  <tr class="tx-10">
+                    <th class="pd-y-5">قيمة الدفعة</th>
+                    <th class="pd-y-5 tx-right">تاريخ الدفعة</th>
+                    <th class="pd-y-5">عن شهر</th>
+                    <th class="pd-y-5">نوع الدفعة  </th>
+                    <th class="pd-y-5">رقم الشيك ان وجد</th>
+                    <th class="pd-y-5">تاريخ استحقاق الشيك ان وجد </th>
+                    <th class="pd-y-5"> الملاحظات</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+
+              
+            </div><!-- card -->
+          </div><!-- col-6 -->
+        </div><!-- row -->
+
+        <div class="row row-sm mg-t-20"> <!-- Information Cards Start-->
           <!-- Building Location Card -->
           <div class="col-sm-6 col-lg-4">
             <div class="card shadow-base bd-0 border rounded-lg">
@@ -273,7 +378,7 @@ tbody td {
                   <i class="fa fa-map-marker-alt fa-3x text-primary"></i>
                 </div>
                 <h5 class="card-title text-uppercase tx-bold"> وصف الشقة</h5>
-                <p class="text-muted tx-14">الوصف: <span id="Adescription" class="tx-primary"></span></p>
+                <p class="text-muted tx-14">   <span id="Adescription" class="tx-primary"></span></p>
               </div>
             </div>
           </div>
@@ -286,7 +391,7 @@ tbody td {
                   <i class="fa fa-home fa-3x text-warning"></i>
                 </div>
                 <h5 class="card-title text-uppercase tx-bold"> عدد الغرف</h5>
-                <p class="text-muted tx-14">عدد الغرف: <span id="AroomsCount" class="tx-warning"></span></p>
+                <p class="text-muted tx-14">   <span id="AroomsCount" class="tx-warning"></span></p>
               </div>
             </div>
           </div>
@@ -299,7 +404,7 @@ tbody td {
                   <i class="fa fa-building fa-3x text-success"></i>
                 </div>
                 <h5 class="card-title text-uppercase tx-bold">هل الشقة متاحة ؟</h5>
-                <p class="text-muted tx-14">هل متاحة؟: <span id="AisAvaliable" class="tx-success"></span></p>
+                <p class="text-muted tx-14">  <span id="AisAvaliable" class="tx-success"></span></p>
               </div>
             </div>
           </div>
@@ -312,7 +417,7 @@ tbody td {
                   <i class="fa fa-coins fa-3x text-danger"></i>
                 </div>
                 <h5 class="card-title text-uppercase tx-bold">قيمة الاجار الشهرية</h5>
-                <p class="text-muted tx-14">قيمة الاجار: <span id="ArentingValuePerMonth" class="tx-danger"></span></p>
+                <p class="text-muted tx-14">   <span id="ArentingValuePerMonth" class="tx-danger"></span></p>
               </div>
             </div>
           </div>
@@ -325,7 +430,7 @@ tbody td {
                   <i class="fa fa-wrench fa-3x text-info"></i>
                 </div>
                 <h5 class="card-title text-uppercase tx-bold">قيمة الخدمات الشهرية</h5>
-                <p class="text-muted tx-14">Services Fee: <span id="BtotalServices" class="tx-info"></span></p>
+                <p class="text-muted tx-14"> <span id="BtotalServices" class="tx-info"></span></p>
               </div>
             </div>
           </div>
@@ -432,123 +537,13 @@ tbody td {
                 <div class="icon-container mb-3">
                   <i class="fa fa-times fa-3x text-danger"></i>
                 </div>
-                <h5 class="card-title text-uppercase tx-bold">ازالة المستأجر</h5>
+                
                 <a href="#"><h5 class="card-title text-uppercase tx-bold"> <i class="fa fa-times mg-r-5 tx-danger"></i>  ازالة المستأجر من الشقة</h5></a>
               </div>
             </div>
           </div>
 
-        </div>    
-
-     
- 
- 
-
-        <div class="row row-sm mg-t-20">
- 
-          <div class="col-lg-12 mg-t-20 mg-lg-t-0">
-            <div class="card shadow-base bd-0">
-              <div class="card-header pd-20 bg-transparent">
-                <h4 class="card-title tx-uppercase tx-25 mg-b-0">الدفعات</h4>
-              </div><!-- card-header -->
-              <table class="table table-responsive w-100 mg-b-0 tx-12" id="apartmentsTable">
-                <thead>
-                  <tr class="tx-10">
-                    <th class="pd-y-5">قيمة الدفعة</th>
-                    <th class="pd-y-5 tx-right">تاريخ الدفعة</th>
-                    <th class="pd-y-5">عن شهر</th>
-                    <th class="pd-y-5">نوع الدفعة  </th>
-                    <th class="pd-y-5">رقم الشيك ان وجد</th>
-                    <th class="pd-y-5">تاريخ استحقاق الشيك ان وجد </th>
-                    <th class="pd-y-5"> الملاحظات</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
-              <div class="card-footer tx-12 pd-y-15 bg-transparent">
-                <a data-toggle="collapse" href="#collapseExample"  aria-expanded="false" aria-controls="collapseExample"class="tx-15 tx-warning tx-bold"><i class="fa fa-edit mg-r-5 tx-danger"></i>  أضافة دفعة جديدة </a>
-              </div><!-- card-footer -->
-              <div class="collapse" id="collapseExample">
-                <div class="card card-body">
-                  <form class="form-layout form-layout-1" id="paymentForm" enctype="multipart/form-data">
-                    <div class="row mg-b-25">
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <label class="form-control-label">  قيمة الدفعة: <span class="tx-danger">*</span></label>
-                          <input class="form-control" type="number" id="paymentValue" name="paymentValue" required>
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <label class="form-control-label"> الشهر: <span class="tx-danger">*</span></label>
-                          <select class="custom-select" id="month" name="month"required>
-                            <option selected value="">اختر...</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <label class="form-control-label"> طريقة الدفع: <span class="tx-danger">*</span></label>
-                          <select class="custom-select" onchange="checkPaymentType()" id="paymentType" name="paymentType"required>
-                            <option selected value="">اختر...</option>
-                            <option value="CASH">Cash</option>
-                            <option value="CHEQUE">Cheque</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <label class="form-control-label"> الملاحظات : </label>
-                          <input class="form-control" type="text" id="notes" name="notes">
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <label class="form-control-label"> العملة: <span class="tx-danger">*</span></label>
-                          <select class="custom-select" id="currency" name="currency"required>
-                            <option selected value="">اختر...</option>
-                            <option value="NIS">شيكل</option>
-                            <option value="JOD">دينار اردني</option>
-                            <option value="USD">دولار امريكي</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <label class="form-control-label" id="labelchequeNumber"> رقم الشيك : </label>
-                          <input class="form-control" type="number" id="chequeNumber" name="chequeNumber">
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group">
-                          <label class="form-control-label" id="labelchequeDueDate"> تاريخ الشيك : </label>
-                          <input class="form-control" type="date" id="chequeDueDate" name="chequeDueDate">
-                        </div>
-                      </div>
-
-                    </div>
-                    <div class="form-layout-footer">
-                      <button class="btn btn-success" type="submit">انشاء</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div><!-- card -->
-          </div><!-- col-6 -->
-        </div><!-- row -->
+        </div>     <!-- Information Cards Start-->
 
        
       </div><!-- br-pagebody -->
@@ -638,7 +633,7 @@ tbody td {
           return response.json();
         })
         .then(data => {
-            document.getElementById('Aname').textContent ="شقة "+ data.name;
+            document.getElementById('Aname').textContent = data.name;
             document.getElementById('Adescription').textContent = data.description;
             document.getElementById('AroomsCount').textContent = data.numberOfRooms;
             document.getElementById('AisAvaliable').textContent = data.available ? 'نعم' : 'لا';

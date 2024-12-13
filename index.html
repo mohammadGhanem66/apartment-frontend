@@ -61,21 +61,20 @@
             <span class="menu-item-label">الرئيسية</span>
           </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
-
-       
-    
         <li class="br-menu-item">
           <a href="#" class="br-menu-link with-sub">
             <i class="menu-item-icon ion-ios-redo-outline tx-24"></i>
             <span class="menu-item-label">العمارات</span>
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">
-            <li class="sub-item"><a href="building.html" class="sub-link">العمارات</a></li>
             <li class="sub-item"><a href="apartment-create.html" class="sub-link">انشاء عمارة</a></li>
           </ul>
         </li><!-- br-menu-item -->
         <li class="br-menu-item">
-          
+          <a href="password.html" class="br-menu-link">
+            <i class="menu-item-icon icon ion-ios-settings tx-24"></i>
+            <span class="menu-item-label">تغير كلمة المرور</span>
+          </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
 
       </ul><!-- br-sideleft-menu -->
@@ -178,14 +177,35 @@
 
     <div class="br-mainpanel">
       <div class="br-pagetitle">
-        <i class="icon ion-ios-home-outline"></i>
-        <div>
-          <h4>الرئيسية</h4>
-        </div>
       </div><!-- d-flex -->
 
       <div class="br-pagebody">
-        <div class="row row-sm">
+        <div class="row row-sm mg-t-20">
+          <div class="col-lg-12">
+            <div class="card bd-0 shadow-base">
+              <div class="d-md-flex justify-content-between pd-25">
+
+          <div class="bd bd-gray-300 rounded table-responsive">
+            <table class="table table-striped mg-b-0" id ="buildingsTable">
+              <thead>
+                <tr>
+                  <th>اسم العمارة</th>
+                  <th>عدد الشقق</th>
+                  <th>مجموع التحصيل الشهري</th>
+                  <th>قيمة الخدمات الشهرية</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div><!-- bd -->
+              </div><!-- d-flex -->
+            </div><!-- card -->
+          </div><!-- col-8 -->
+        </div><!-- row -->
+
+
+       <div class="row row-sm mb-5 mt-3">  <!-- caaaaaaaaaaards -->
           <div class="col-sm-6 col-xl-3">
             <div class="bg-info rounded overflow-hidden">
               <div class="pd-x-20 pd-t-20 d-flex align-items-center">
@@ -234,39 +254,9 @@
               <div id="ch4" class="ht-50 tr-y-1"></div>
             </div>
           </div><!-- col-3 -->
-        </div><!-- row -->
-        <div class="row row-sm mg-t-20">
-          <div class="col-lg-12">
-            <div class="card bd-0 shadow-base">
-              <div class="d-md-flex justify-content-between pd-25">
+        </div><!-- row  caaaaaaaaaaards -->
 
-          <div class="bd bd-gray-300 rounded table-responsive">
-            <table class="table table-striped mg-b-0" id ="buildingsTable">
-              <thead>
-                <tr>
-                  <th>اسم العمارة</th>
-                  <th>عدد الشقق</th>
-                  <th>مجموع التحصيل الشهري</th>
-                  <th>قيمة الخدمات الشهرية</th>
-                </tr>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
-          </div><!-- bd -->
-              </div><!-- d-flex -->
-
-       
-            </div><!-- card -->
-
- 
-
-
-
-
-          </div><!-- col-8 -->
-       
-        </div><!-- row -->
+        
 
       </div><!-- br-pagebody -->
 
