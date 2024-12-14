@@ -245,51 +245,7 @@
                     <th class="pd-y-5 tx-right">الوصف</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td class="pd-l-20">
-                      <img src="https://via.placeholder.com/800x533" class="wd-55" alt="Image">
-                    </td>
-                    <td>
-                      <a href="" class="tx-inverse tx-14 tx-medium d-block">شقة الاحمد</a>
-                    </td>
-                    <td class="valign-middle tx-right">3</td>
-                    <td class="valign-middle"><span class="tx-success"><i class="icon ion-android-arrow-up mg-r-5"></i>540</span></td>
-                    <td class="valign-middle"><span class="tx-success"><i class="icon ion-android-arrow-up mg-r-5"></i>نعم</span></td>
-                    <td class="valign-middle">
-                      <a href="" class="tx-gray-600 tx-22"><i class="icon ion-android-more-horizontal"></i></a>
-                    </td>
-                  </tr>
-                       <tr>
-                    <td class="pd-l-20">
-                      <img src="https://via.placeholder.com/800x533" class="wd-55" alt="Image">
-                    </td>
-                    <td>
-                      <a href="" class="tx-inverse tx-14 tx-medium d-block">شقة الاحمد</a>
-                    </td>
-                    <td class="valign-middle tx-right">3</td>
-                    <td class="valign-middle"><span class="tx-success"><i class="icon ion-android-arrow-up mg-r-5"></i>540</span></td>
-                    <td class="valign-middle"><span class="tx-success"><i class="icon ion-android-arrow-up mg-r-5"></i>نعم</span></td>
-                    <td class="valign-middle">
-                      <a href="" class="tx-gray-600 tx-22"><i class="icon ion-android-more-horizontal"></i></a>
-                    </td>
-                  </tr>
-				            <tr>
-                    <td class="pd-l-20">
-                      <img src="https://via.placeholder.com/800x533" class="wd-55" alt="Image">
-                    </td>
-                    <td>
-                      <a href="" class="tx-inverse tx-14 tx-medium d-block">شقة الاحمد</a>
-                    </td>
-                    <td class="valign-middle tx-right">3</td>
-                    <td class="valign-middle"><span class="tx-success"><i class="icon ion-android-arrow-up mg-r-5"></i>540</span></td>
-                    <td class="valign-middle"><span class="tx-success"><i class="icon ion-android-arrow-up mg-r-5"></i>نعم</span></td>
-                    <td class="valign-middle ">
-                      <a href="" class="tx-gray-600 tx-22"><i class="icon ion-android-more-horizontal"></i></a>
-                    </td>
-                  </tr>
-                
-         
+                <tbody>         
                 </tbody>
               </table>
               <div class="card-footer tx-12 pd-y-15 bg-transparent">
@@ -446,6 +402,7 @@
     <script src="js/bracket.js"></script>
     <script src="js/ResizeSensor.js"></script>
     <script src="js/widgets.js"></script>
+    <script type="module" src="javascript/building.js"></script>
     <script>
       $(function(){
         'use strict'
@@ -474,88 +431,88 @@
         }
       });
       // Step 1: Get the building ID from the URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const buildingId = urlParams.get('id');
-      console.log("Building Id is :- "+ buildingId);
-      // Step 2: Fetch building details
-      if (buildingId) {
-        fetchBuildingDetails(buildingId);
-        fetchApartments(buildingId);
-      } else {
-        console.error('No building ID provided in URL');
-      }
+      // const urlParams = new URLSearchParams(window.location.search);
+      // const buildingId = urlParams.get('id');
+      // console.log("Building Id is :- "+ buildingId);
+      // // Step 2: Fetch building details
+      // if (buildingId) {
+      //   fetchBuildingDetails(buildingId);
+      //   fetchApartments(buildingId);
+      // } else {
+      //   console.error('No building ID provided in URL');
+      // }
 
-      function fetchBuildingDetails(id) {
-        const apiUrl = `https://apartman-service-production.up.railway.app/buildings/${id}`;
+      // function fetchBuildingDetails(id) {
+      //   const apiUrl = `https://apartman-service-production.up.railway.app/buildings/${id}`;
         
-        fetch(apiUrl, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw'
-          }
-        })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(data => {
-            // Step 3: Display building details
-            // document.getElementById('building-id').textContent = data.id;
-            document.getElementById('Bname').textContent = data.name;
-            document.getElementById('Blocation').textContent = data.address;
-            document.getElementById('BroomsCount').textContent = data.apartmentCount;
-            document.getElementById('BfloorsCount').textContent = data.floorsCount;
-            document.getElementById('BtotalServices').textContent = data.monthlyFees || '-';
-            document.getElementById('BtotalCollection').textContent = data.monthlyRentPrice;
-            console.log(data.name);
-            console.log(data.monthlyRentPrice);
-        })
-        .catch(error => {
-          console.error('Error fetching building details:', error);
-        });
-      }
+      //   fetch(apiUrl, {
+      //     method: 'GET',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //       'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw'
+      //     }
+      //   })
+      //   .then(response => {
+      //     if (!response.ok) {
+      //       throw new Error(`HTTP error! Status: ${response.status}`);
+      //     }
+      //     return response.json();
+      //   })
+      //   .then(data => {
+      //       // Step 3: Display building details
+      //       // document.getElementById('building-id').textContent = data.id;
+      //       document.getElementById('Bname').textContent = data.name;
+      //       document.getElementById('Blocation').textContent = data.address;
+      //       document.getElementById('BroomsCount').textContent = data.apartmentCount;
+      //       document.getElementById('BfloorsCount').textContent = data.floorsCount;
+      //       document.getElementById('BtotalServices').textContent = data.monthlyFees || '-';
+      //       document.getElementById('BtotalCollection').textContent = data.monthlyRentPrice;
+      //       console.log(data.name);
+      //       console.log(data.monthlyRentPrice);
+      //   })
+      //   .catch(error => {
+      //     console.error('Error fetching building details:', error);
+      //   });
+      // }
 
-      function fetchApartments(buildingId) {
-      const apiUrl = `https://apartman-service-production.up.railway.app/apartments/building-apartments/${buildingId}`;
+    //   function fetchApartments(buildingId) {
+    //   const apiUrl = `https://apartman-service-production.up.railway.app/apartments/building-apartments/${buildingId}`;
 
-      fetch(apiUrl, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw'
-        }
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(apartments => {
-        const apartmentsTableBody = document.querySelector('#apartmentsTable tbody');
-        apartmentsTableBody.innerHTML = ''; // Clear any existing rows
+    //   fetch(apiUrl, {
+    //     method: 'GET',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw'
+    //     }
+    //   })
+    //   .then(response => {
+    //     if (!response.ok) {
+    //       throw new Error(`HTTP error! Status: ${response.status}`);
+    //     }
+    //     return response.json();
+    //   })
+    //   .then(apartments => {
+    //     const apartmentsTableBody = document.querySelector('#apartmentsTable tbody');
+    //     apartmentsTableBody.innerHTML = ''; // Clear any existing rows
 
-        apartments.forEach(apartment => {
-          const row = document.createElement('tr');
-          // <td class="pd-l-20"><img src="https://via.placeholder.com/800x533" class="wd-55" alt="Image"></td>
-          row.innerHTML = `
-            <td style="cursor: pointer; font-weight: bold"><a href="apartment.html?id=${apartment.id}" class="view-details tx-14 tx-medium d-block">${apartment.name}</a></td>
-            <td class="valign-middle"><span class="tx-success">${apartment.monthlyRentValue} </span></td>
-            <td class="valign-middle">${apartment.currency}</td>
-            <td class="valign-middle"><span class="tx-success tx-14 tx-${apartment.available ? 'success' : 'danger'}">${apartment.available ? 'متاح' : 'مؤجرة'}</span></td>
-            <td class="valign-middle">${apartment.numberOfRooms}</td>
-            <td>${apartment.description}</td>
-          `;
-          apartmentsTableBody.appendChild(row);
-        });
-      })
-      .catch(error => {
-        console.error('Error fetching apartments:', error);
-      });
-    }
+    //     apartments.forEach(apartment => {
+    //       const row = document.createElement('tr');
+    //       // <td class="pd-l-20"><img src="https://via.placeholder.com/800x533" class="wd-55" alt="Image"></td>
+    //       row.innerHTML = `
+    //         <td style="cursor: pointer; font-weight: bold"><a href="apartment.html?id=${apartment.id}" class="view-details tx-14 tx-medium d-block">${apartment.name}</a></td>
+    //         <td class="valign-middle"><span class="tx-success">${apartment.monthlyRentValue} </span></td>
+    //         <td class="valign-middle">${apartment.currency}</td>
+    //         <td class="valign-middle"><span class="tx-success tx-14 tx-${apartment.available ? 'success' : 'danger'}">${apartment.available ? 'متاح' : 'مؤجرة'}</span></td>
+    //         <td class="valign-middle">${apartment.numberOfRooms}</td>
+    //         <td>${apartment.description}</td>
+    //       `;
+    //       apartmentsTableBody.appendChild(row);
+    //     });
+    //   })
+    //   .catch(error => {
+    //     console.error('Error fetching apartments:', error);
+    //   });
+    // }
 
     
     // Creating Appartment ! 

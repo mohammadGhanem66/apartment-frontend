@@ -568,21 +568,8 @@ tbody td {
     <script src="js/bracket.js"></script>
     <script src="js/ResizeSensor.js"></script>
     <script src="js/widgets.js"></script>
+    <script type="module" src="javascript/apartment.js"></script>
     <script>
-      function checkPaymentType(){
-        var paymentType = document.getElementById("paymentType").value;
-        if (paymentType === "CASH") {
-          document.getElementById("chequeNumber").style.display = "none";
-          document.getElementById("chequeDueDate").style.display = "none";
-          document.getElementById("labelchequeNumber").style.display = "none";
-          document.getElementById("labelchequeDueDate").style.display = "none";
-        }else {
-          document.getElementById("chequeNumber").style.display = "block";
-          document.getElementById("chequeDueDate").style.display = "block";
-          document.getElementById("labelchequeNumber").style.display = "block";
-          document.getElementById("labelchequeDueDate").style.display = "block";
-        }
-      }
       $(function(){
         'use strict'
         $(window).resize(function(){
@@ -605,86 +592,86 @@ tbody td {
         }
       });
       // Step 1: Get the apartment ID from the URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const apartmentId = urlParams.get('id');
-      console.log("Apartment Id is :- "+ apartmentId);
-      // Step 2: Fetch building details
-      if (apartmentId) {
-        fetchApartmentDetails(apartmentId);
-        fetchPayments(apartmentId);
-      } else {
-        console.error('No Apartment ID provided in URL');
-      }
+      // const urlParams = new URLSearchParams(window.location.search);
+      // const apartmentId = urlParams.get('id');
+      // console.log("Apartment Id is :- "+ apartmentId);
+      // // Step 2: Fetch building details
+      // if (apartmentId) {
+      //   fetchApartmentDetails(apartmentId);
+      //   fetchPayments(apartmentId);
+      // } else {
+      //   console.error('No Apartment ID provided in URL');
+      // }
 
-      function fetchApartmentDetails(id) {
-        const apiUrl = `https://apartman-service-production.up.railway.app/apartments/${id}`;
+      // function fetchApartmentDetails(id) {
+      //   const apiUrl = `https://apartman-service-production.up.railway.app/apartments/${id}`;
         
-        fetch(apiUrl, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw'
-          }
-        })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(data => {
-            document.getElementById('Aname').textContent = data.name;
-            document.getElementById('Adescription').textContent = data.description;
-            document.getElementById('AroomsCount').textContent = data.numberOfRooms;
-            document.getElementById('AisAvaliable').textContent = data.available ? 'نعم' : 'لا';
-            document.getElementById('ArentingValuePerMonth').textContent = data.monthlyRentValue;
-            console.log(data.name);
-            console.log(data.monthlyRentPrice);
-        })
-        .catch(error => {
-          console.error('Error fetching building details:', error);
-        });
-      }
+      //   fetch(apiUrl, {
+      //     method: 'GET',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //       'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw'
+      //     }
+      //   })
+      //   .then(response => {
+      //     if (!response.ok) {
+      //       throw new Error(`HTTP error! Status: ${response.status}`);
+      //     }
+      //     return response.json();
+      //   })
+      //   .then(data => {
+      //       document.getElementById('Aname').textContent = data.name;
+      //       document.getElementById('Adescription').textContent = data.description;
+      //       document.getElementById('AroomsCount').textContent = data.numberOfRooms;
+      //       document.getElementById('AisAvaliable').textContent = data.available ? 'نعم' : 'لا';
+      //       document.getElementById('ArentingValuePerMonth').textContent = data.monthlyRentValue;
+      //       console.log(data.name);
+      //       console.log(data.monthlyRentPrice);
+      //   })
+      //   .catch(error => {
+      //     console.error('Error fetching building details:', error);
+      //   });
+      // }
 
-      function fetchPayments(apartmentId) {
-      console.log("Payments API");
-      const apiUrl = `https://apartman-service-production.up.railway.app/payments/apartment-payments/${apartmentId}`;
+    //   function fetchPayments(apartmentId) {
+    //   console.log("Payments API");
+    //   const apiUrl = `https://apartman-service-production.up.railway.app/payments/apartment-payments/${apartmentId}`;
 
-      fetch(apiUrl, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw'
-        }
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(payments => {
-        const paymentsTableBody = document.querySelector('#apartmentsTable tbody');
-        paymentsTableBody.innerHTML = ''; // Clear any existing rows
+    //   fetch(apiUrl, {
+    //     method: 'GET',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw'
+    //     }
+    //   })
+    //   .then(response => {
+    //     if (!response.ok) {
+    //       throw new Error(`HTTP error! Status: ${response.status}`);
+    //     }
+    //     return response.json();
+    //   })
+    //   .then(payments => {
+    //     const paymentsTableBody = document.querySelector('#apartmentsTable tbody');
+    //     paymentsTableBody.innerHTML = ''; // Clear any existing rows
 
-        payments.forEach(payment => {
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td class="tx-success">${payment.value}</td>
-            <td>${payment.paymentDate.split('T')[0]}</td>
-            <td>${payment.month}</td>
-            <td class="tx-warning">${payment.paymentType}</td>
-            <td>${payment.chequeNumber ? payment.chequeNumber : '-'}</td>
-            <td class="tx-danger">${payment.chequeDueDate ? payment.chequeDueDate.split('T')[0] : '-'}</td>
-            <td>${payment.notes}</td>
-            `;
-            paymentsTableBody.appendChild(row);
-        });
-      })
-      .catch(error => {
-        console.error('Error fetching payments:', error);
-      });
-    }
+    //     payments.forEach(payment => {
+    //       const row = document.createElement('tr');
+    //       row.innerHTML = `
+    //         <td class="tx-success">${payment.value}</td>
+    //         <td>${payment.paymentDate.split('T')[0]}</td>
+    //         <td>${payment.month}</td>
+    //         <td class="tx-warning">${payment.paymentType}</td>
+    //         <td>${payment.chequeNumber ? payment.chequeNumber : '-'}</td>
+    //         <td class="tx-danger">${payment.chequeDueDate ? payment.chequeDueDate.split('T')[0] : '-'}</td>
+    //         <td>${payment.notes}</td>
+    //         `;
+    //         paymentsTableBody.appendChild(row);
+    //     });
+    //   })
+    //   .catch(error => {
+    //     console.error('Error fetching payments:', error);
+    //   });
+    // }
 
     document.getElementById('paymentForm').addEventListener('submit', function(event) {
       event.preventDefault(); // Prevent default form submission
