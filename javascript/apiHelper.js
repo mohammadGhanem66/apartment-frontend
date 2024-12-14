@@ -32,5 +32,40 @@ function apiFetch(url, options = {}) {
       return response.json();
     });
 }
+async function apiPostOrPut(apiUrl, method, body) {
+  const token = localStorage.getItem('accessToken');
 
-export { apiFetch };
+  const options = {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify(body),
+  };
+
+  try {
+    const response = await fetch(apiUrl, options);
+
+    if (response.status === 401) {
+      handleUnauthorized();
+      throw new Error('Unauthorized! Redirecting to login...');
+    }
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    // Check if response body is JSON
+    const contentType = response.headers.get('Content-Type') || '';
+    if (contentType.includes('application/json')) {
+      return await response.json();
+    } else {
+      return { message: await response.text() }; // Handle non-JSON response
+    }
+  } catch (error) {
+    console.error('API call error:', error);
+    throw error;
+  }
+}
+export { apiFetch, apiPostOrPut };
