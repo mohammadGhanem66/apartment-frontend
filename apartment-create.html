@@ -266,42 +266,7 @@
 
     <script src="js/bracket.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-    <script>
-      $('form').on('submit', function(e) {
-      e.preventDefault();
-      $.ajax({
-        url: 'https://apartman-service-production.up.railway.app/buildings',
-        type: 'POST',
-        headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODUzNzc2LCJleHAiOjE3MzM0NDU3NzZ9.K_lxTaFLS8ytrtM3HVsTCL1evEKCAATpMhS0PulUCy8`
-        },
-        data: JSON.stringify({
-          "name": $('#name').val(),
-          "address": $('#address').val(),
-          "apartmentCount": parseInt($('#apartmentCount').val()),
-          "floorsCount": parseInt($('#floorsCount').val()),
-          "monthlyFees": parseInt($('#monthlyFees').val()),
-          "monthlyRentPrice": parseInt($('#monthlyRentPrice').val()),
-          //"buildingImages": ["image_url"] // If necessary
-        }),
-        success: function(response) {
-          console.log('Building created successfully:', response);
-          $('#name').val('')
-          $('#address').val('')
-          $('#apartmentCount').val('')
-          $('#floorsCount').val('')
-          $('#monthlyFees').val('')
-          $('#monthlyRentPrice').val('')
-          alert('تم انشاء العمارة بنجاح !');
-        },
-        error: function(xhr, status, error) {
-          console.error('Error creating building:', error);
-          alert('يوجد مشكلة في انشاء العمارة');
-        }
-      });
-    });
-    </script>
+    <script type="module" src="javascript/buildingCreate.js"></script>
+
   </body>
 </html>

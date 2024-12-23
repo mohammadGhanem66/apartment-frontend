@@ -39,7 +39,7 @@ async function apiPostOrPut(apiUrl, method, body) {
     method,
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
+      'Authorization': `${token}`,
     },
     body: JSON.stringify(body),
   };
