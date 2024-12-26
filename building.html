@@ -267,13 +267,13 @@
                           <input class="form-control" type="text" id="description" name="description">
                         </div>
                       </div>
-                      <div class="col-lg-4">
+                      <!-- <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label">  مبلغ الاجار الشهري : <span class="tx-danger">*</span></label>
                           <input class="form-control" type="text" id="monthlyRenting" name="monthlyRenting" placeholder="مثال : 500" required>
                         </div>
-                      </div>
-                      <div class="col-lg-4">
+                      </div> -->
+                      <!-- <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label"> العملة: <span class="tx-danger">*</span></label>
                           <select class="custom-select" id="currency" name="currency"required>
@@ -283,14 +283,14 @@
                             <option value="USD">دولار امريكي</option>
                           </select>
                         </div>
-                      </div>
+                      </div> -->
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label"> عدد الغرف: <span class="tx-danger">*</span></label>
                           <input class="form-control" type="text" id="roomsCount" name="roomsCount" placeholder="مثال : 4" required>
                         </div>
                       </div>
-                      <div class="col-lg-4">
+                      <!-- <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label"> طريقة الدفع: <span class="tx-danger">*</span></label>
                           <select class="custom-select" id="howToPay" name="howToPay"required>
@@ -300,7 +300,7 @@
                             <option value="MONTHLY">شهري</option>
                           </select>
                         </div>
-                      </div>
+                      </div> -->
                     
                     </div>
                     <div class="form-layout-footer">
@@ -516,55 +516,55 @@
 
     
     // Creating Appartment ! 
-    document.querySelector('form').addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent the form from submitting in the traditional way
+  //   document.querySelector('form').addEventListener('submit', function (event) {
+  //   event.preventDefault(); // Prevent the form from submitting in the traditional way
     
-    // Collect form data
-    const apartmentData = {
-      name: document.getElementById('name').value,
-      description: document.getElementById('description').value,
-      monthlyRentValue: document.getElementById('monthlyRenting').value,
-      currency: document.getElementById('currency').value ? document.getElementById('currency').value : 'NIS',
-      numberOfRooms: document.getElementById('roomsCount').value,
-      howToPay: document.getElementById('howToPay').value ? document.getElementById('howToPay').value : 'MONTHLY',
-      buildingId: buildingId,
-      type: "APARTMENT",
-      tenantId: 1,
-      contractPicture: "img",
-      available: true
-    };
+  //   // Collect form data
+  //   const apartmentData = {
+  //     name: document.getElementById('name').value,
+  //     description: document.getElementById('description').value,
+  //     monthlyRentValue: document.getElementById('monthlyRenting').value,
+  //     currency: document.getElementById('currency').value ? document.getElementById('currency').value : 'NIS',
+  //     numberOfRooms: document.getElementById('roomsCount').value,
+  //     howToPay: document.getElementById('howToPay').value ? document.getElementById('howToPay').value : 'MONTHLY',
+  //     buildingId: buildingId,
+  //     type: "APARTMENT",
+  //     tenantId: 1,
+  //     contractPicture: "img",
+  //     available: true
+  //   };
 
-    // API URL and Bearer token
-    const apiUrl = "https://apartman-service-production.up.railway.app/apartments";
-    const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw";
+  //   // API URL and Bearer token
+  //   const apiUrl = "https://apartman-service-production.up.railway.app/apartments";
+  //   const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw";
     
-    // Send POST request to create apartment
-    fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODUzNzc2LCJleHAiOjE3MzM0NDU3NzZ9.K_lxTaFLS8ytrtM3HVsTCL1evEKCAATpMhS0PulUCy8`
-      },
-      body: JSON.stringify(apartmentData)
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Apartment created successfully:', data);
-      alert('تم انشاء الشقة بنجاح');
-      // Optionally reset the form or redirect the user
-      document.querySelector('form').reset();
-      fetchApartments(buildingId);
-    })
-    .catch(error => {
-      console.error('There was an error creating the apartment!', error);
-      alert('Failed to create apartment. Please try again.');
-    });
-  });
+  //   // Send POST request to create apartment
+  //   fetch(apiUrl, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODUzNzc2LCJleHAiOjE3MzM0NDU3NzZ9.K_lxTaFLS8ytrtM3HVsTCL1evEKCAATpMhS0PulUCy8`
+  //     },
+  //     body: JSON.stringify(apartmentData)
+  //   })
+  //   .then(response => {
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error! Status: ${response.status}`);
+  //     }
+  //     return response.json();
+  //   })
+  //   .then(data => {
+  //     console.log('Apartment created successfully:', data);
+  //     alert('تم انشاء الشقة بنجاح');
+  //     // Optionally reset the form or redirect the user
+  //     document.querySelector('form').reset();
+  //     fetchApartments(buildingId);
+  //   })
+  //   .catch(error => {
+  //     console.error('There was an error creating the apartment!', error);
+  //     alert('Failed to create apartment. Please try again.');
+  //   });
+  // });
 
     </script>
   </body>

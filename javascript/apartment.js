@@ -1,4 +1,4 @@
-import { apiFetch } from './apiHelper.js';
+import { apiFetch, apiPostOrPut } from './apiHelper.js';
 
 // Step 1: Get the apartment ID from the URL
 const urlParams = new URLSearchParams(window.location.search);
@@ -18,6 +18,7 @@ function fetchApartmentDetails(id) {
   apiFetch(apiUrl)
       .then(data => {
         displayApartmentInfo(data);
+        checkRenttingInfo(data);
       })
       .catch(error => {
         console.error('There was an error!', error);
@@ -35,7 +36,15 @@ function fetchPayments(apartmentId) {
         console.error('There was an error!', error);
       });
 }
-
+function checkRenttingInfo(data){
+  if(data.rentalDetails == null){
+    $('#renttingAppartmentDiv').show();
+    $('#UnRenttingAppartmentDiv').hide();
+  }else {
+    $('#renttingAppartmentDiv').hide();
+    $('#UnRenttingAppartmentDiv').show();
+  }
+}
 
 function displayApartmentInfo(data) {
   document.getElementById('Aname').textContent = data.name;
@@ -43,6 +52,11 @@ function displayApartmentInfo(data) {
   document.getElementById('AroomsCount').textContent = data.numberOfRooms;
   document.getElementById('AisAvaliable').textContent = data.available ? 'نعم' : 'لا';
   document.getElementById('ArentingValuePerMonth').textContent = data.monthlyRentValue;
+  //Inputs for editing
+  $('#appartmentNameEdit').val(data.name);
+  $('#appartmentDescriptionEdit').val(data.description);
+  $('#appartmentRoomsNumberEdit').val(data.numberOfRooms);
+ 
 }
 
 function displayPayments(payments) {
@@ -78,3 +92,33 @@ function checkPaymentType(){
   }
 }
 
+const button = document.getElementById('EditBtn');
+
+button.addEventListener('click', async  function() {
+  console.log("Appartment Put Function ....!");
+  const apiUrl = "https://apartman-service-production.up.railway.app/apartments/"+apartmentId;
+  const name = $('#appartmentNameEdit').val();
+  const description = $('#appartmentDescriptionEdit').val();
+  const roomsCount = $('#appartmentRoomsNumberEdit').val();
+  console.log(apiUrl);
+  if(localStorage.getItem('buildingId') == null || localStorage.getItem('buildingId') == ""){
+    alert("يوجد مشكلة في السيرفر");
+  }
+  const body = {
+    name: name,
+    description: description,
+    numberOfRooms: roomsCount,
+    type: "APARTMENT",
+    version: 0,
+    buildingId: localStorage.getItem('buildingId'),
+  };
+  //localStorage.removeItem('buildingId');
+  try {
+    const response = await apiPostOrPut(apiUrl, 'PUT', body);
+    console.log('Appartment updated Successfully:', response);
+    alert("تم التعديل بنجاح");
+  } catch (error) {
+    console.error('Error :', error);
+    alert('يوجد مشكلة في السيرفر');
+  }
+});

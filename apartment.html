@@ -444,12 +444,12 @@ tbody td {
                 <a data-toggle="collapse" href="#collapseEditAppartment"  aria-expanded="false" aria-controls="collapseEditAppartment"><h5 class="card-title text-uppercase tx-bold"> <i class="fa fa-edit mg-r-5 tx-danger"></i>  التعديل على معلومات الشقة</h5></a>
                 <div class="collapse" id="collapseEditAppartment"> <!-- Start of collabs div  -->
                   <div class="card card-body">
-                    <form class="form-layout form-layout-1" id="apartmentEditForm" enctype="multipart/form-data">
+                    <div class="form-layout form-layout-1" id="apartmentEditForm" >
                       <div class="row mg-b-25">
                         <div class="col-lg-4">
                           <div class="form-group">
                             <label class="form-control-label">اسم الشقة <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="number" id="appartmentNameEdit" name="appartmentNameEdit" required>
+                            <input class="form-control" type="text" id="appartmentNameEdit" name="appartmentNameEdit" required>
                           </div>
                         </div>
                         <div class="col-lg-4">
@@ -460,21 +460,16 @@ tbody td {
                         </div>
                         <div class="col-lg-4">
                           <div class="form-group">
-                            <label class="form-control-label"> قيمة الاجار الشهرية: </label>
-                            <input class="form-control" type="text" id="appartmentMontylyRentEdit" name="appartmentMontylyRentEdit">
+                            <label class="form-control-label"> عدد الشقق</label>
+                            <input class="form-control" type="text" id="appartmentRoomsNumberEdit" name="appartmentRoomsNumberEdit">
                           </div>
                         </div>
-                        <div class="col-lg-4">
-                          <div class="form-group">
-                            <label class="form-control-label"> قيمة الخدمات الشهرية: </label>
-                            <input class="form-control" type="text" id="appartmentServiceFeeEdit" name="appartmentServiceFeeEdit">
-                          </div>
-                        </div>
+
                       </div>
                       <div class="form-layout-footer">
-                        <button class="btn btn-success" type="submit">تعديل</button>
+                        <button class="btn btn-success" id="EditBtn" type="submit">تعديل</button>
                       </div>
-                    </form>
+                    </div>
                   </div>
                 </div>   <!-- End of collabs div  -->
               
@@ -483,7 +478,7 @@ tbody td {
             </div>
           </div>  <!-- End of Edit card Div  -->
 
-          <div class="col-sm-6 col-lg-6 mg-t-20"> <!-- Start of Edit card Div  -->
+          <div class="col-sm-6 col-lg-6 mg-t-20" id ="renttingAppartmentDiv"> <!-- Start of Edit card Div  -->
             <div class="card shadow-base bd-0 border rounded-lg">
               <div class="card-body text-center">
                 <div class="icon-container mb-3">
@@ -531,7 +526,7 @@ tbody td {
             </div>
           </div>  <!-- End of Edit card Div  -->
 
-          <div class="col-sm-12 col-lg-12 mg-t-20">
+          <div class="col-sm-12 col-lg-12 mg-t-20" id="UnRenttingAppartmentDiv">
             <div class="card shadow-base bd-0 border rounded-lg">
               <div class="card-body text-center">
                 <div class="icon-container mb-3">
