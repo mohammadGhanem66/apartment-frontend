@@ -44,8 +44,8 @@ function loadStatistics() {
     });
 }
 function displayStatistics(data){
-  document.getElementById('stat1').textContent = data.stat1;
-  document.getElementById('stat2').textContent = data.stat2;
-  document.getElementById('stat3').textContent = data.stat3;
-  document.getElementById('stat4').textContent = data.stat4;
+  document.getElementById('stat1').textContent = data.rentedApartments;
+  document.getElementById('stat2').textContent = data.vacatedApartments;
+  document.getElementById('stat3').textContent = data.paidAmounts;
+  document.getElementById('stat4').textContent = data.unpaidOwedAmounts;
 }
