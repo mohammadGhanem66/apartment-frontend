@@ -487,7 +487,7 @@ tbody td {
                 <a data-toggle="collapse" href="#collapseRentAppartment"  aria-expanded="false" aria-controls="collapseRentAppartment"><h5 class="card-title text-uppercase tx-bold"> <i class="fa fa-building mg-r-5 tx-success"></i>  تأجير الشقة</h5></a>
                 <div class="collapse" id="collapseRentAppartment"> <!-- Start of collabs div  -->
                   <div class="card card-body">
-                    <form class="form-layout form-layout-1" id="apartmentEditForm" enctype="multipart/form-data">
+                    <div class="form-layout form-layout-1" id="rentingAppForm">
                       <div class="row mg-b-25">
                         <div class="col-lg-4">
                           <div class="form-group">
@@ -497,27 +497,63 @@ tbody td {
                         </div>
                         <div class="col-lg-4">
                           <div class="form-group">
-                            <label class="form-control-label"> رقم هاتف </label>
+                            <label class="form-control-label"> رقم هاتف <span class="tx-danger">*</span></label>
                             <input class="form-control" type="text" id="rentingUserPhone" name="rentingUserPhone">
                           </div>
                         </div>
                         <div class="col-lg-4">
                           <div class="form-group">
-                            <label class="form-control-label"> رقم الهوية </label>
-                            <input class="form-control" type="text" id="rentingUserId" name="rentingUserId">
+                            <label class="form-control-label">صورة الهوية<span class="tx-danger">*</span></label>
+                            <input class="form-control" type="file" id="rentingIdIMG" name="rentingIdIMG">
                           </div>
                         </div>
                         <div class="col-lg-4">
                           <div class="form-group">
-                            <label class="form-control-label"> قيمة الاجار الشهرية </label>
+                            <label class="form-control-label"> قيمة الاجار الشهرية <span class="tx-danger">*</span></label>
                             <input class="form-control" type="text" id="rentingUserPay" name="rentingUserPay">
                           </div>
                         </div>
+                        <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="form-control-label"> العملة: <span class="tx-danger">*</span></label>
+                            <select class="custom-select" id="currencyRenting" name="currencyRenting"required>
+                              <option selected value="">اختر...</option>
+                              <option value="NIS">شيكل</option>
+                              <option value="JOD">دينار اردني</option>
+                              <option value="USD">دولار امريكي</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="form-group">
+                              <label class="form-control-label"> طريقة التأجير<span class="tx-danger">*</span></label>
+                              <select class="custom-select" id="rentalType" name="rentalType"required>
+                                <option selected value="">اختر...</option>
+                                <option value="MONTHLY">شهري</option>
+                                <option value="HALF_YEARLY">نصف سنوي</option>
+                                <option value="YEARLY">سنوي</option>
+                              </select>
+                            </div>
+                          </div>
+                        <div class="col-lg-4">
+                          <div class="form-group">
+                            <label class="form-control-label"> تاريخ بدأ التاجير<span class="tx-danger">*</span></label>
+                            <input class="form-control" type="date" id="rentalStartDate" name="rentalStartDate">
+                          </div>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="form-group">
+                            <label class="form-control-label">صورة عقد التأجير</label>
+                            <input class="form-control" type="file" id="contractPicture" name="contractPicture">
+                          </div>
+                        </div>
+
+
                       </div>
                       <div class="form-layout-footer">
-                        <button class="btn btn-success" type="submit">تعديل</button>
+                        <button class="btn btn-success" id="rentAppBTN"type="submit">تأجير</button>
                       </div>
-                    </form>
+                    </div>
                   </div>
                 </div>   <!-- End of collabs div  -->
               
@@ -526,14 +562,14 @@ tbody td {
             </div>
           </div>  <!-- End of Edit card Div  -->
 
-          <div class="col-sm-12 col-lg-12 mg-t-20" id="UnRenttingAppartmentDiv">
+          <div class="col-sm-6 col-lg-6 mg-t-20" id="UnRenttingAppartmentDiv">
             <div class="card shadow-base bd-0 border rounded-lg">
               <div class="card-body text-center">
                 <div class="icon-container mb-3">
                   <i class="fa fa-times fa-3x text-danger"></i>
                 </div>
                 
-                <a href="#"><h5 class="card-title text-uppercase tx-bold"> <i class="fa fa-times mg-r-5 tx-danger"></i>  ازالة المستأجر من الشقة</h5></a>
+                <a href="#" id="unRentingBTN"><h5 class="card-title text-uppercase tx-bold"> <i class="fa fa-times mg-r-5 tx-danger"></i>  ازالة المستأجر من الشقة</h5></a>
               </div>
             </div>
           </div>

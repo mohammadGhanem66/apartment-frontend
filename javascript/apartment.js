@@ -103,6 +103,7 @@ button.addEventListener('click', async  function() {
   console.log(apiUrl);
   if(localStorage.getItem('buildingId') == null || localStorage.getItem('buildingId') == ""){
     alert("يوجد مشكلة في السيرفر");
+    return;
   }
   const body = {
     name: name,
@@ -117,6 +118,65 @@ button.addEventListener('click', async  function() {
     const response = await apiPostOrPut(apiUrl, 'PUT', body);
     console.log('Appartment updated Successfully:', response);
     alert("تم التعديل بنجاح");
+  } catch (error) {
+    console.error('Error :', error);
+    alert('يوجد مشكلة في السيرفر');
+  }
+});
+
+const rentAppBTN = document.getElementById('rentAppBTN');
+rentAppBTN.addEventListener('click', async  function() {
+  console.log("Rent Post Function ....!");
+  const apiUrl = "https://apartman-service-production.up.railway.app/apartments/rent-apartment/"+apartmentId;
+  const name = $('#rentingUserName').val();
+  const phone = $('#rentingUserPhone').val();
+  const monthlyRentValue = $('#rentingUserPay').val();
+  const currency = $('#currencyRenting').val();
+  const rentalType = $('#rentalType').val();
+  const dateInput = $('#rentalStartDate').val();
+  const rentalStartDate = new Date(dateInput).toISOString();
+
+  const body = {
+    monthlyRentValue: monthlyRentValue,
+    currency: currency,
+    rentalType: rentalType,
+    paymentDue: "MONTHLY",
+    rentalStartDate: rentalStartDate,
+    tenant:{
+      name: name,
+      phone: phone,
+    }
+  };
+  try {
+    const response = await apiPostOrPut(apiUrl, 'POST', body);
+    console.log('Appartment rendted Successfully:', response);
+    alert("تم تأجير الشقة");
+    $('#rentingUserName').val('');
+    $('#rentingUserPhone').val('');
+    $('#rentingUserPay').val('');
+    $('#rentalStartDate').val('');
+  } catch (error) {
+    console.error('Error :', error);
+    alert('يوجد مشكلة في السيرفر');
+  }
+
+});
+
+
+const unRentingBTN = document.getElementById('unRentingBTN');
+unRentingBTN.addEventListener('click', async  function() {
+  const isConfirmed = confirm("هل أنت متأكد أنك تريد إلغاء تأجير الشقة؟");
+  if (!isConfirmed) {
+    return;
+  }
+
+  console.log("UnRent Post Function ....!");
+  const apiUrl = "https://apartman-service-production.up.railway.app/apartments/vacate-apartment/"+apartmentId;
+  const body = {};
+  try {
+    const response = await apiPostOrPut(apiUrl, 'POST', body);
+    alert("تم الغاء تأجير الشقة");
+    location.reload();
   } catch (error) {
     console.error('Error :', error);
     alert('يوجد مشكلة في السيرفر');
