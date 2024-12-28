@@ -26,7 +26,8 @@ function fetchApartmentDetails(id) {
 }
 function fetchPayments(apartmentId) {
   console.log("Payments API");
-  const apiUrl = `https://apartman-service-production.up.railway.app/payments/apartment-payments/${apartmentId}`;
+  const currentYear = new Date().getFullYear();
+  const apiUrl = `https://apartman-service-production.up.railway.app/payments/apartment-payments/${apartmentId}`+'?year='+currentYear;
 
   apiFetch(apiUrl)
       .then(data => {
@@ -40,9 +41,11 @@ function checkRenttingInfo(data){
   if(data.rentalDetails == null){
     $('#renttingAppartmentDiv').show();
     $('#UnRenttingAppartmentDiv').hide();
+    $('#payingDiv').hide();
   }else {
     $('#renttingAppartmentDiv').hide();
     $('#UnRenttingAppartmentDiv').show();
+    $('#payingDiv').show();
   }
 }
 
@@ -77,20 +80,7 @@ function displayPayments(payments) {
       paymentsTableBody.appendChild(row);
   });
 }
-function checkPaymentType(){
-  var paymentType = document.getElementById("paymentType").value;
-  if (paymentType === "CASH") {
-    document.getElementById("chequeNumber").style.display = "none";
-    document.getElementById("chequeDueDate").style.display = "none";
-    document.getElementById("labelchequeNumber").style.display = "none";
-    document.getElementById("labelchequeDueDate").style.display = "none";
-  }else {
-    document.getElementById("chequeNumber").style.display = "block";
-    document.getElementById("chequeDueDate").style.display = "block";
-    document.getElementById("labelchequeNumber").style.display = "block";
-    document.getElementById("labelchequeDueDate").style.display = "block";
-  }
-}
+
 
 const button = document.getElementById('EditBtn');
 
@@ -125,6 +115,7 @@ button.addEventListener('click', async  function() {
 });
 
 const rentAppBTN = document.getElementById('rentAppBTN');
+
 rentAppBTN.addEventListener('click', async  function() {
   console.log("Rent Post Function ....!");
   const apiUrl = "https://apartman-service-production.up.railway.app/apartments/rent-apartment/"+apartmentId;
@@ -164,6 +155,7 @@ rentAppBTN.addEventListener('click', async  function() {
 
 
 const unRentingBTN = document.getElementById('unRentingBTN');
+
 unRentingBTN.addEventListener('click', async  function() {
   const isConfirmed = confirm("هل أنت متأكد أنك تريد إلغاء تأجير الشقة؟");
   if (!isConfirmed) {
@@ -181,4 +173,65 @@ unRentingBTN.addEventListener('click', async  function() {
     console.error('Error :', error);
     alert('يوجد مشكلة في السيرفر');
   }
+});
+
+const paymentBTN = document.getElementById('paymentBTN');
+
+paymentBTN.addEventListener('click', async  function() {
+  console.log("Payment Post Function ....!");
+  const apiUrl = "https://apartman-service-production.up.railway.app/payments";
+
+  const body = {
+    value: document.getElementById('paymentValue').value,
+    month: document.getElementById('month').value,
+    paymentType: document.getElementById('paymentType').value,
+    notes: document.getElementById('notes').value,
+    currency: document.getElementById('currency').value,
+    apartmentId: apartmentId,
+    paymentDate: getCurrentISODate(),
+    tenantId: 1,
+    chequeNumber: document.getElementById('chequeNumber').value || null,
+    chequeDueDate: formatToISO(document.getElementById('chequeDueDate').value) || null,
+    year: document.getElementById('paymentYear').value,
+  };
+  try {
+    const response = await apiPostOrPut(apiUrl, 'POST', body);
+    console.log('Payment Successfully:', response);
+    alert("تم تسجيل الدفعة !");
+    $('#paymentValue').val('');
+    $('#month').val('');
+    $('#paymentType').val('');
+    $('#notes').val('');
+    $('#currency').val('');
+    $('#chequeNumber').val('');
+    $('#chequeDueDate').val('');
+    $('#paymentYear').val('');
+  } catch (error) {
+    console.error('Error :', error);
+    alert('يوجد مشكلة في السيرفر');
+  }
+});
+function formatToISO(dateString) {
+  if (!dateString) return null; // Return null if dateString is empty
+  const date = new Date(dateString);
+  return isNaN(date.getTime()) ? null : date.toISOString(); // Ensure valid date
+}
+function getCurrentISODate() {
+  return new Date().toISOString();
+}
+
+const fillterYearSelect = document.getElementById('yearsToFillter'); 
+
+fillterYearSelect.addEventListener('change', async  function() {
+  console.log("Filttering Year function ...!");
+  const year = document.getElementById('yearsToFillter').value;
+  const apiUrl = `https://apartman-service-production.up.railway.app/payments/apartment-payments/${apartmentId}`+'?year='+year;
+
+  apiFetch(apiUrl)
+      .then(data => {
+        displayPayments(data);
+      })
+      .catch(error => {
+        console.error('There was an error!', error);
+      });
 });

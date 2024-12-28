@@ -32,7 +32,7 @@ function displayBuildings(buildings) {
 }
 function loadStatistics() {
   console.log("loadStatistics Function");
-  const apiUrl = "https://apartman-service-production.up.railway.app/statistics";
+  const apiUrl = "https://apartman-service-production.up.railway.app/statistics/main-page-statistics";
 
   apiFetch(apiUrl)
     .then(data => {

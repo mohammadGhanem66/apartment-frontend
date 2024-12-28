@@ -265,14 +265,14 @@ tbody td {
                 <h4 class="card-title tx-uppercase tx-25 mg-b-0">الدفعات</h4>
               </div><!-- card-header -->
               <!-- Add Payment Button -->
-            <div class="card-footer tx-12 pd-y-15 bg-transparent">
+            <div class="card-footer tx-12 pd-y-15 bg-transparent" id="payingDiv">
               <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" class="tx-15 tx-warning tx-bold">
                 <i class="fa fa-edit mg-r-5 tx-danger"></i> أضافة دفعة جديدة
               </a>
             </div>
             <div class="collapse" id="collapseExample">
               <div class="card card-body">
-                <form class="form-layout form-layout-1" id="paymentForm" enctype="multipart/form-data">
+                <div class="form-layout form-layout-1" id="paymentForm"  >
                   <div class="row mg-b-25">
                     <div class="col-lg-4">
                       <div class="form-group">
@@ -298,6 +298,12 @@ tbody td {
                           <option value="11">11</option>
                           <option value="12">12</option>
                         </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label"> السنة !<span class="tx-danger">*</span></label>
+                        <input class="form-control" type="number" id="paymentYear" name="paymentYear" required>
                       </div>
                     </div>
                     <div class="col-lg-4">
@@ -342,12 +348,32 @@ tbody td {
 
                   </div>
                   <div class="form-layout-footer">
-                    <button class="btn btn-success" type="submit">انشاء</button>
+                    <button class="btn btn-success" id="paymentBTN"type="submit">انشاء</button>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
-            
+            <label class="form-control-label"> السنة: <span class="tx-danger">*</span></label>
+            <select class="custom-select mb-2"id="yearsToFillter" name="yearsToFillter"required>
+              <option selected value="">اختر...</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+              <option value="2027">2027</option>
+              <option value="2028">2028</option>
+              <option value="2029">2029</option>
+              <option value="2030">2030</option>
+              <option value="2031">2031</option>
+              <option value="2032">2032</option>
+              <option value="2033">2033</option>
+              <option value="2034">2034</option>
+              <option value="2035">2035</option>
+              <option value="2036">2036</option>
+            </select>
               <table class="table table-responsive w-100 mg-b-0 tx-12" id="apartmentsTable">
                 <thead>
                   <tr class="tx-10">
@@ -622,145 +648,21 @@ tbody td {
           }
         }
       });
-      // Step 1: Get the apartment ID from the URL
-      // const urlParams = new URLSearchParams(window.location.search);
-      // const apartmentId = urlParams.get('id');
-      // console.log("Apartment Id is :- "+ apartmentId);
-      // // Step 2: Fetch building details
-      // if (apartmentId) {
-      //   fetchApartmentDetails(apartmentId);
-      //   fetchPayments(apartmentId);
-      // } else {
-      //   console.error('No Apartment ID provided in URL');
-      // }
 
-      // function fetchApartmentDetails(id) {
-      //   const apiUrl = `https://apartman-service-production.up.railway.app/apartments/${id}`;
-        
-      //   fetch(apiUrl, {
-      //     method: 'GET',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //       'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw'
-      //     }
-      //   })
-      //   .then(response => {
-      //     if (!response.ok) {
-      //       throw new Error(`HTTP error! Status: ${response.status}`);
-      //     }
-      //     return response.json();
-      //   })
-      //   .then(data => {
-      //       document.getElementById('Aname').textContent = data.name;
-      //       document.getElementById('Adescription').textContent = data.description;
-      //       document.getElementById('AroomsCount').textContent = data.numberOfRooms;
-      //       document.getElementById('AisAvaliable').textContent = data.available ? 'نعم' : 'لا';
-      //       document.getElementById('ArentingValuePerMonth').textContent = data.monthlyRentValue;
-      //       console.log(data.name);
-      //       console.log(data.monthlyRentPrice);
-      //   })
-      //   .catch(error => {
-      //     console.error('Error fetching building details:', error);
-      //   });
-      // }
-
-    //   function fetchPayments(apartmentId) {
-    //   console.log("Payments API");
-    //   const apiUrl = `https://apartman-service-production.up.railway.app/payments/apartment-payments/${apartmentId}`;
-
-    //   fetch(apiUrl, {
-    //     method: 'GET',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw'
-    //     }
-    //   })
-    //   .then(response => {
-    //     if (!response.ok) {
-    //       throw new Error(`HTTP error! Status: ${response.status}`);
-    //     }
-    //     return response.json();
-    //   })
-    //   .then(payments => {
-    //     const paymentsTableBody = document.querySelector('#apartmentsTable tbody');
-    //     paymentsTableBody.innerHTML = ''; // Clear any existing rows
-
-    //     payments.forEach(payment => {
-    //       const row = document.createElement('tr');
-    //       row.innerHTML = `
-    //         <td class="tx-success">${payment.value}</td>
-    //         <td>${payment.paymentDate.split('T')[0]}</td>
-    //         <td>${payment.month}</td>
-    //         <td class="tx-warning">${payment.paymentType}</td>
-    //         <td>${payment.chequeNumber ? payment.chequeNumber : '-'}</td>
-    //         <td class="tx-danger">${payment.chequeDueDate ? payment.chequeDueDate.split('T')[0] : '-'}</td>
-    //         <td>${payment.notes}</td>
-    //         `;
-    //         paymentsTableBody.appendChild(row);
-    //     });
-    //   })
-    //   .catch(error => {
-    //     console.error('Error fetching payments:', error);
-    //   });
-    // }
-
-    document.getElementById('paymentForm').addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent default form submission
-
-      // Collect form data
-      const paymentData = {
-        value: document.getElementById('paymentValue').value,
-        month: document.getElementById('month').value,
-        paymentType: document.getElementById('paymentType').value,
-        notes: document.getElementById('notes').value,
-        currency: document.getElementById('currency').value,
-        apartmentId: apartmentId,
-        paymentDate: getCurrentISODate(),
-        tenantId: 1,
-        chequeNumber: document.getElementById('chequeNumber').value || null,
-        chequeDueDate: formatToISO(document.getElementById('chequeDueDate').value) || null,
-
-      };
-
-      // API URL and Bearer token
-      const apiUrl = "https://apartman-service-production.up.railway.app/payments";
-      const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw";
-
-      // Send POST request to create payment
-      fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify(paymentData)
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+      function checkPaymentType(){
+        var paymentType = document.getElementById("paymentType").value;
+        if (paymentType === "CASH") {
+          document.getElementById("chequeNumber").style.display = "none";
+          document.getElementById("chequeDueDate").style.display = "none";
+          document.getElementById("labelchequeNumber").style.display = "none";
+          document.getElementById("labelchequeDueDate").style.display = "none";
+        }else {
+          document.getElementById("chequeNumber").style.display = "block";
+          document.getElementById("chequeDueDate").style.display = "block";
+          document.getElementById("labelchequeNumber").style.display = "block";
+          document.getElementById("labelchequeDueDate").style.display = "block";
         }
-        return response.json();
-      })
-      .then(data => {
-        console.log('Payment created successfully:', data);
-        alert('تم انشاء الدفعة بنجاح !!');
-        // Optionally reset the form or redirect the user
-        document.getElementById('paymentForm').reset();
-        fetchPayments(apartmentId);
-      })
-      .catch(error => {
-        console.error('There was an error creating the payment!', error);
-        alert('Failed to create payment. Please try again.');
-      });
-    });
-    function formatToISO(dateString) {
-      if (!dateString) return null; // Return null if dateString is empty
-      const date = new Date(dateString);
-      return isNaN(date.getTime()) ? null : date.toISOString(); // Ensure valid date
-    }
-    function getCurrentISODate() {
-      return new Date().toISOString();
-    }
+      }
     </script>
   </body>
 </html>
