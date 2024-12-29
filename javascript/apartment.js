@@ -100,7 +100,7 @@ button.addEventListener('click', async  function() {
     description: description,
     numberOfRooms: roomsCount,
     type: "APARTMENT",
-    version: 0,
+    version: 1,
     buildingId: localStorage.getItem('buildingId'),
   };
   //localStorage.removeItem('buildingId');
@@ -108,6 +108,7 @@ button.addEventListener('click', async  function() {
     const response = await apiPostOrPut(apiUrl, 'PUT', body);
     console.log('Appartment updated Successfully:', response);
     alert("تم التعديل بنجاح");
+    location.reload();
   } catch (error) {
     console.error('Error :', error);
     alert('يوجد مشكلة في السيرفر');
@@ -180,7 +181,16 @@ const paymentBTN = document.getElementById('paymentBTN');
 paymentBTN.addEventListener('click', async  function() {
   console.log("Payment Post Function ....!");
   const apiUrl = "https://apartman-service-production.up.railway.app/payments";
-
+  const value = document.getElementById('paymentValue').value;
+  const month = document.getElementById('month').value;
+  const paymentType = document.getElementById('paymentType').value;
+  const notes = document.getElementById('notes').value;
+  const currency = document.getElementById('currency').value;
+  const year = document.getElementById('paymentYear').value;
+  if(value == "" || month == "" || paymentType == "" || notes == "" || currency == "" || year == ""){  
+      alert("يجب ملئ جميع الحقول !");
+      return;
+  }
   const body = {
     value: document.getElementById('paymentValue').value,
     month: document.getElementById('month').value,
