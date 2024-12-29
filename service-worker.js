@@ -13,33 +13,46 @@ const assetsToCache = [
   'lib/jquery/jquery.min.js'
 ];
 
+// self.addEventListener('install', (event) => {
+//   console.log("service worker start installing !!");
+//   event.waitUntil(
+//     caches.open(CACHE_NAME).then(cache => {
+//       cache.addAll(assetsToCache);
+//     })
+//   );
+//   // event.waitUntil(
+//   //   caches.open(CACHE_NAME)
+//   //     .then((cache) => {
+//   //       return cache.addAll(assetsToCache);
+//   //     })
+//   // );
+// });
 self.addEventListener('install', (event) => {
-  console.log("service worker start installing !!");
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      cache.addAll(assetsToCache);
-    })
-  );
-  // event.waitUntil(
-  //   caches.open(CACHE_NAME)
-  //     .then((cache) => {
-  //       return cache.addAll(assetsToCache);
-  //     })
-  // );
+  self.skipWaiting(); // Activate the new service worker immediately
 });
+// self.addEventListener('activate', (event) => {
+//   console.log("Service worker activated");
+//   event.waitUntil(
+//     caches.keys().then(keys => {
+//       console.log(keys);
+//       return Promise.all(
+//         keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
+//       )
+//     })
+//   );
+
+// });
 self.addEventListener('activate', (event) => {
-  console.log("Service worker activated");
   event.waitUntil(
-    caches.keys().then(keys => {
-      console.log(keys);
+    caches.keys().then((keys) => {
       return Promise.all(
-        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
-      )
+        keys.filter((key) => key !== CACHE_NAME && key !== dynamicCahceName)
+            .map((key) => caches.delete(key))
+      );
     })
   );
-
+  return self.clients.claim(); // Claim control of all active tabs
 });
-
 // self.addEventListener('fetch', (event) => {
 //   console.log(event.request);
 
