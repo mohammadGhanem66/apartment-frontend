@@ -138,18 +138,18 @@
           <div class="dropdown">
             <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
               <span class="logged-name hidden-md-down">مصعب</span>
-              <img src="https://via.placeholder.com/500" class="wd-32 rounded-circle" alt="">
+              <img src="img/pofile.png" class="wd-32 rounded-circle" alt="">
               <span class="square-10 bg-success"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-header wd-250">
               <div class="tx-center">
-                <a href=""><img src="https://via.placeholder.com/500" class="wd-80 rounded-circle" alt=""></a>
+                <a href=""><img src="img/pofile.png" class="wd-80 rounded-circle" alt=""></a>
                 <h6 class="logged-fullname">مصعب</h6>
 
               </div>
 
               <ul class="list-unstyled user-profile-nav">
-                <li><a href=""><i class="icon ion-power"></i> تسجيل الخروج</a></li>
+                <li><a href=""id="logoutBTN"><i class="icon ion-power"></i> تسجيل الخروج</a></li>
               </ul>
             </div><!-- dropdown-menu -->
           </div><!-- dropdown -->
@@ -351,6 +351,7 @@
     <script src="js/ResizeSensor.js"></script>
     <script src="js/widgets.js"></script>
     <script type="module" src="javascript/building.js"></script>
+    <script src="javascript/general.js"></script>
     <script>
       $(function(){
         'use strict'
@@ -378,141 +379,6 @@
           }
         }
       });
-      // Step 1: Get the building ID from the URL
-      // const urlParams = new URLSearchParams(window.location.search);
-      // const buildingId = urlParams.get('id');
-      // console.log("Building Id is :- "+ buildingId);
-      // // Step 2: Fetch building details
-      // if (buildingId) {
-      //   fetchBuildingDetails(buildingId);
-      //   fetchApartments(buildingId);
-      // } else {
-      //   console.error('No building ID provided in URL');
-      // }
-
-      // function fetchBuildingDetails(id) {
-      //   const apiUrl = `https://apartman-service-production.up.railway.app/buildings/${id}`;
-        
-      //   fetch(apiUrl, {
-      //     method: 'GET',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //       'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw'
-      //     }
-      //   })
-      //   .then(response => {
-      //     if (!response.ok) {
-      //       throw new Error(`HTTP error! Status: ${response.status}`);
-      //     }
-      //     return response.json();
-      //   })
-      //   .then(data => {
-      //       // Step 3: Display building details
-      //       // document.getElementById('building-id').textContent = data.id;
-      //       document.getElementById('Bname').textContent = data.name;
-      //       document.getElementById('Blocation').textContent = data.address;
-      //       document.getElementById('BroomsCount').textContent = data.apartmentCount;
-      //       document.getElementById('BfloorsCount').textContent = data.floorsCount;
-      //       document.getElementById('BtotalServices').textContent = data.monthlyFees || '-';
-      //       document.getElementById('BtotalCollection').textContent = data.monthlyRentPrice;
-      //       console.log(data.name);
-      //       console.log(data.monthlyRentPrice);
-      //   })
-      //   .catch(error => {
-      //     console.error('Error fetching building details:', error);
-      //   });
-      // }
-
-    //   function fetchApartments(buildingId) {
-    //   const apiUrl = `https://apartman-service-production.up.railway.app/apartments/building-apartments/${buildingId}`;
-
-    //   fetch(apiUrl, {
-    //     method: 'GET',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw'
-    //     }
-    //   })
-    //   .then(response => {
-    //     if (!response.ok) {
-    //       throw new Error(`HTTP error! Status: ${response.status}`);
-    //     }
-    //     return response.json();
-    //   })
-    //   .then(apartments => {
-    //     const apartmentsTableBody = document.querySelector('#apartmentsTable tbody');
-    //     apartmentsTableBody.innerHTML = ''; // Clear any existing rows
-
-    //     apartments.forEach(apartment => {
-    //       const row = document.createElement('tr');
-    //       // <td class="pd-l-20"><img src="https://via.placeholder.com/800x533" class="wd-55" alt="Image"></td>
-    //       row.innerHTML = `
-    //         <td style="cursor: pointer; font-weight: bold"><a href="apartment.html?id=${apartment.id}" class="view-details tx-14 tx-medium d-block">${apartment.name}</a></td>
-    //         <td class="valign-middle"><span class="tx-success">${apartment.monthlyRentValue} </span></td>
-    //         <td class="valign-middle">${apartment.currency}</td>
-    //         <td class="valign-middle"><span class="tx-success tx-14 tx-${apartment.available ? 'success' : 'danger'}">${apartment.available ? 'متاح' : 'مؤجرة'}</span></td>
-    //         <td class="valign-middle">${apartment.numberOfRooms}</td>
-    //         <td>${apartment.description}</td>
-    //       `;
-    //       apartmentsTableBody.appendChild(row);
-    //     });
-    //   })
-    //   .catch(error => {
-    //     console.error('Error fetching apartments:', error);
-    //   });
-    // }
-
-    
-    // Creating Appartment ! 
-  //   document.querySelector('form').addEventListener('submit', function (event) {
-  //   event.preventDefault(); // Prevent the form from submitting in the traditional way
-    
-  //   // Collect form data
-  //   const apartmentData = {
-  //     name: document.getElementById('name').value,
-  //     description: document.getElementById('description').value,
-  //     monthlyRentValue: document.getElementById('monthlyRenting').value,
-  //     currency: document.getElementById('currency').value ? document.getElementById('currency').value : 'NIS',
-  //     numberOfRooms: document.getElementById('roomsCount').value,
-  //     howToPay: document.getElementById('howToPay').value ? document.getElementById('howToPay').value : 'MONTHLY',
-  //     buildingId: buildingId,
-  //     type: "APARTMENT",
-  //     tenantId: 1,
-  //     contractPicture: "img",
-  //     available: true
-  //   };
-
-  //   // API URL and Bearer token
-  //   const apiUrl = "https://apartman-service-production.up.railway.app/apartments";
-  //   const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODU0ODEyLCJleHAiOjE3MzM0NDY4MTJ9.uHj37pf2zyxfJXv6BgE-M-Gva5HwOqu6TpWSd32sKWw";
-    
-  //   // Send POST request to create apartment
-  //   fetch(apiUrl, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraGFsZWQuYXNmdXJAZ21haWwuY29tIiwiaWF0IjoxNzMwODUzNzc2LCJleHAiOjE3MzM0NDU3NzZ9.K_lxTaFLS8ytrtM3HVsTCL1evEKCAATpMhS0PulUCy8`
-  //     },
-  //     body: JSON.stringify(apartmentData)
-  //   })
-  //   .then(response => {
-  //     if (!response.ok) {
-  //       throw new Error(`HTTP error! Status: ${response.status}`);
-  //     }
-  //     return response.json();
-  //   })
-  //   .then(data => {
-  //     console.log('Apartment created successfully:', data);
-  //     alert('تم انشاء الشقة بنجاح');
-  //     // Optionally reset the form or redirect the user
-  //     document.querySelector('form').reset();
-  //     fetchApartments(buildingId);
-  //   })
-  //   .catch(error => {
-  //     console.error('There was an error creating the apartment!', error);
-  //     alert('Failed to create apartment. Please try again.');
-  //   });
-  // });
 
     </script>
   </body>
