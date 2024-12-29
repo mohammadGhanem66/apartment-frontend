@@ -40,66 +40,62 @@ self.addEventListener('activate', (event) => {
 
 });
 
-self.addEventListener('fetch', (event) => {
-  console.log(event.request);
-
-  event.respondWith(
-    caches.match(event.request).then(cacheRes => {
-      return cacheRes || fetch(event.request).then(fetchRes => {
-        return caches.open(dynamicCahceName).then(cache => {
-          cache.put(event.request.url, fetchRes.clone());
-          return fetchRes;
-        })
-      })
-    }).catch(() => {
-      if (event.request.headers.get('accept').includes('text/html')) {
-        return caches.match('/');
-      }
-    })
-  );
-  
-//   event.respondWith(
-//     caches.match(event.request)
-//       .then((response) => {
-//         return response || fetch(event.request);
-//       })
-//   );
-});
 // self.addEventListener('fetch', (event) => {
-//   const requestUrl = new URL(event.request.url);
+//   console.log(event.request);
 
-//   // Check if the request is for dynamic content (e.g., API)
-//   if (requestUrl.pathname.startsWith('/api')) {
-//     // Network-first strategy for API requests
-//     event.respondWith(
-//       fetch(event.request)
-//         .then(fetchRes => {
-//           // Update the dynamic cache with the new response
-//           return caches.open(dynamicCahceName).then(cache => {
-//             cache.put(event.request, fetchRes.clone());
-//             return fetchRes;
-//           });
+//   event.respondWith(
+//     caches.match(event.request).then(cacheRes => {
+//       return cacheRes || fetch(event.request).then(fetchRes => {
+//         return caches.open(dynamicCahceName).then(cache => {
+//           cache.put(event.request.url, fetchRes.clone());
+//           return fetchRes;
 //         })
-//         .catch(() => {
-//           // Fall back to cache if network fails
-//           return caches.match(event.request);
-//         })
-//     );
-//   } else {
-//     // Cache-first strategy for other requests
-//     event.respondWith(
-//       caches.match(event.request).then(cacheRes => {
-//         return cacheRes || fetch(event.request).then(fetchRes => {
-//           return caches.open(dynamicCahceName).then(cache => {
-//             cache.put(event.request, fetchRes.clone());
-//             return fetchRes;
-//           });
-//         });
-//       }).catch(() => {
-//         if (event.request.headers.get('accept').includes('text/html')) {
-//           return caches.match('/');
-//         }
 //       })
-//     );
-//   }
+//     }).catch(() => {
+//       if (event.request.headers.get('accept').includes('text/html')) {
+//         return caches.match('/');
+//       }
+//     })
+//   );
+  
+// //   event.respondWith(
+// //     caches.match(event.request)
+// //       .then((response) => {
+// //         return response || fetch(event.request);
+// //       })
+// //   );
 // });
+
+
+self.addEventListener('fetch', (event) => {
+  const apiUrlPattern = 'https://apartman-service-production.up.railway.app';
+
+  if (event.request.url.startsWith(apiUrlPattern)) {
+    // For API requests, use a network-first strategy
+    event.respondWith(
+      fetch(event.request)
+        .then(fetchRes => {
+          return caches.open(dynamicCahceName).then(cache => {
+            cache.put(event.request.url, fetchRes.clone());
+            return fetchRes;
+          });
+        })
+        .catch(() => {
+          // If network fails, serve from cache
+          return caches.match(event.request);
+        })
+    );
+  } else {
+    // For static assets, use a cache-first strategy
+    event.respondWith(
+      caches.match(event.request).then(cacheRes => {
+        return cacheRes || fetch(event.request).then(fetchRes => {
+          return caches.open(dynamicCahceName).then(cache => {
+            cache.put(event.request.url, fetchRes.clone());
+            return fetchRes;
+          });
+        });
+      })
+    );
+  }
+});
