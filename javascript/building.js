@@ -52,18 +52,22 @@ function displayApartments(apartments) {
   apartmentsTableBody.innerHTML = ''; // Clear any existing rows
 
   apartments.forEach(apartment => {
-    const rentalDetails = apartment.rentalDetails || {}; // Ensure rentalDetails is an object
-    const monthlyRentValue = rentalDetails?.monthlyRentValue ?? '-'; // Default to 'N/A' if null/undefined
-    const currency = rentalDetails?.currency ?? '-'; // Default to 'N/A' if null/undefined
+    const rentalDetails = apartment.rentalDetails || {};
+    const monthlyRentValue = rentalDetails?.monthlyRentValue ?? '-';
+    const currency = rentalDetails?.currency ?? '-';
+    const tenantName = rentalDetails?.tenant?.name ?? '-';
+
     const row = document.createElement('tr');
     // <td class="pd-l-20"><img src="https://via.placeholder.com/800x533" class="wd-55" alt="Image"></td>
     row.innerHTML = `
       <td style="cursor: pointer; font-weight: bold"><a href="apartment.html?id=${apartment.id}" class="view-details tx-14 tx-medium d-block">${apartment.name}</a></td>
+      <td class="valign-middle"><span class="tx-info">${tenantName} </span></td>
       <td class="valign-middle"><span class="tx-success">${monthlyRentValue} </span></td>
       <td class="valign-middle">${currency}</td>
       <td class="valign-middle"><span class="tx-success tx-14 tx-${apartment.available ? 'success' : 'danger'}">${apartment.available ? 'متاح' : 'مؤجرة'}</span></td>
       <td class="valign-middle">${apartment.numberOfRooms}</td>
       <td>${apartment.description}</td>
+      <td style="cursor: pointer; font-weight: bold"><a href="javascript:deleteApartment(${apartment.id})" class="view-details tx-danger">حذف</a></td>
     `;
     apartmentsTableBody.appendChild(row);
   });
@@ -117,3 +121,21 @@ $('form').on('submit', async function (e) {
     alert('يوجد مشكلة في السيرفر');
   }
 });
+
+window.deleteApartment = async function(id) {
+  const apiUrl = `https://apartman-service-production.up.railway.app/apartments/${id}`;
+  const body = {};
+  const isConfirmed = confirm("هل أنت متأكد ؟");
+  if (!isConfirmed) {
+    return;
+  }
+    try {
+      // Wait for API response
+      const response = await apiPostOrPut(apiUrl, 'DELETE', body);
+      alert('تم حذف الشقة بنجاح');
+      fetchApartments(buildingId);
+    } catch (error) {
+      console.error('Error :', error);
+      alert('يوجد مشكلة في السيرفر');
+    }
+};

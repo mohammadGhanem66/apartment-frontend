@@ -50,11 +50,16 @@ function checkRenttingInfo(data){
 }
 
 function displayApartmentInfo(data) {
+  const rentalDetails = data.rentalDetails || {};
+  const monthlyRentValue = rentalDetails?.monthlyRentValue ?? '-';
+  const currency = rentalDetails?.currency ?? '-';
+  const tenantName = rentalDetails?.tenant?.name ?? '-';
+   
   document.getElementById('Aname').textContent = data.name;
   document.getElementById('Adescription').textContent = data.description;
   document.getElementById('AroomsCount').textContent = data.numberOfRooms;
   document.getElementById('AisAvaliable').textContent = data.available ? 'نعم' : 'لا';
-  document.getElementById('ArentingValuePerMonth').textContent = data.monthlyRentValue;
+  document.getElementById('ArentingValuePerMonth').textContent = monthlyRentValue + ' ' + currency;
   //Inputs for editing
   $('#appartmentNameEdit').val(data.name);
   $('#appartmentDescriptionEdit').val(data.description);
@@ -76,6 +81,7 @@ function displayPayments(payments) {
       <td>${payment.chequeNumber ? payment.chequeNumber : '-'}</td>
       <td class="tx-danger">${payment.chequeDueDate ? payment.chequeDueDate.split('T')[0] : '-'}</td>
       <td>${payment.notes}</td>
+      <td style="cursor: pointer; font-weight: bold"><a href="javascript:deletePayment(${payment.id})" class="view-details tx-danger">حذف</a></td>
       `;
       paymentsTableBody.appendChild(row);
   });
@@ -216,6 +222,7 @@ paymentBTN.addEventListener('click', async  function() {
     $('#chequeNumber').val('');
     $('#chequeDueDate').val('');
     $('#paymentYear').val('');
+    fetchPayments(apartmentId);
   } catch (error) {
     console.error('Error :', error);
     alert('يوجد مشكلة في السيرفر');
@@ -245,3 +252,22 @@ fillterYearSelect.addEventListener('change', async  function() {
         console.error('There was an error!', error);
       });
 });
+
+
+window.deletePayment = async function(id) {
+  const apiUrl = `https://apartman-service-production.up.railway.app/payments/${id}`;
+  const body = {};
+  const isConfirmed = confirm("هل أنت متأكد ؟");
+  if (!isConfirmed) {
+    return;
+  }
+    try {
+      // Wait for API response
+      const response = await apiPostOrPut(apiUrl, 'DELETE', body);
+      alert('تم حذف الدفعة بنجاح');
+      fetchPayments(apartmentId);
+    } catch (error) {
+      console.error('Error :', error);
+      alert('يوجد مشكلة في السيرفر');
+    }
+};

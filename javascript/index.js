@@ -1,4 +1,4 @@
-import { apiFetch } from './apiHelper.js';
+import { apiFetch, apiPostOrPut } from './apiHelper.js';
 
 loadBuildings();
 loadStatistics();
@@ -26,6 +26,7 @@ function displayBuildings(buildings) {
       <td>${building.apartmentCount}</td>
       <td>${building.monthlyRentPrice}</td>
       <td>${building.monthlyFees ? building.monthlyFees : 'لا يوجد'}</td>
+      <td style="cursor: pointer; font-weight: bold"><a href="javascript:deleteBuilding(${building.id})" class="view-details tx-danger">حذف</a></td>
     `;
     buildingsTableBody.appendChild(row);
   });
@@ -49,3 +50,20 @@ function displayStatistics(data){
   document.getElementById('stat3').textContent = data.paidAmounts;
   document.getElementById('stat4').textContent = data.unpaidOwedAmounts;
 }
+window.deleteBuilding = async function(buildingId) {
+  const apiUrl = `https://apartman-service-production.up.railway.app/buildings/${buildingId}`;
+  const body = {};
+  const isConfirmed = confirm("هل أنت متأكد ؟");
+  if (!isConfirmed) {
+    return;
+  }
+    try {
+      // Wait for API response
+      const response = await apiPostOrPut(apiUrl, 'DELETE', body);
+      alert('تم حذف العمارة بنجاح');
+      loadBuildings();
+    } catch (error) {
+      console.error('Error :', error);
+      alert('يوجد مشكلة في السيرفر');
+    }
+};
