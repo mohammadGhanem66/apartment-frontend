@@ -46,6 +46,7 @@ function displayBuildingInfo(building) {
   document.getElementById('BfloorsCount').textContent = building.floorsCount;
   document.getElementById('BtotalServices').textContent = building.monthlyFees || '-';
   document.getElementById('BtotalCollection').textContent = building.monthlyRentPrice;
+  localStorage.setItem('monthlyFees',  building.monthlyFees || '-');
 }
 function displayApartments(apartments) {
   const apartmentsTableBody = document.querySelector('#apartmentsTable tbody');

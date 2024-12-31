@@ -42,10 +42,12 @@ function checkRenttingInfo(data){
     $('#renttingAppartmentDiv').show();
     $('#UnRenttingAppartmentDiv').hide();
     $('#payingDiv').hide();
+    $('#tenentInfoDiv').hide();
   }else {
     $('#renttingAppartmentDiv').hide();
     $('#UnRenttingAppartmentDiv').show();
     $('#payingDiv').show();
+    $('#tenentInfoDiv').show();
   }
 }
 
@@ -54,12 +56,17 @@ function displayApartmentInfo(data) {
   const monthlyRentValue = rentalDetails?.monthlyRentValue ?? '-';
   const currency = rentalDetails?.currency ?? '-';
   const tenantName = rentalDetails?.tenant?.name ?? '-';
-   
+  const tenantphoneNumber = rentalDetails?.tenant?.phoneNumber ?? '-';
+  const monthlyFees = localStorage.getItem('monthlyFees');
+
   document.getElementById('Aname').textContent = data.name;
   document.getElementById('Adescription').textContent = data.description;
   document.getElementById('AroomsCount').textContent = data.numberOfRooms;
   document.getElementById('AisAvaliable').textContent = data.available ? 'نعم' : 'لا';
   document.getElementById('ArentingValuePerMonth').textContent = monthlyRentValue + ' ' + currency;
+  document.getElementById('BtotalServices').textContent = monthlyFees;
+  document.getElementById('BtenetName').textContent = tenantName + " - " + tenantphoneNumber;
+
   //Inputs for editing
   $('#appartmentNameEdit').val(data.name);
   $('#appartmentDescriptionEdit').val(data.description);
