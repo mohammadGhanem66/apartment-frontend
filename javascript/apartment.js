@@ -52,6 +52,7 @@ function checkRenttingInfo(data){
 }
 
 function displayApartmentInfo(data) {
+  console.log("displayApartmentInfo Function");
   const rentalDetails = data.rentalDetails || {};
   const monthlyRentValue = rentalDetails?.monthlyRentValue ?? '-';
   const currency = rentalDetails?.currency ?? '-';
@@ -71,6 +72,20 @@ function displayApartmentInfo(data) {
   $('#appartmentNameEdit').val(data.name);
   $('#appartmentDescriptionEdit').val(data.description);
   $('#appartmentRoomsNumberEdit').val(data.numberOfRooms);
+  if (tenantName != '-') {
+    $('#tenentNameForEditDiv').show();
+    $('#tenentPhoneForEditDiv').show();
+    $('#tenentRentalForEditDiv').show();
+    $('#tenentNameForEdit').val(tenantName);
+    $('#tenentPhoneForEdit').val(tenantphoneNumber);
+    $('#tenentRentalForEdit').val(monthlyRentValue);
+    //Hidden inputs
+    $('#currencyForEdit').val(currency);
+    $('#rentalStartDateForEdit').val(rentalDetails.rentalStartDate);
+    $('#rentalTypeForEdit').val(rentalDetails.rentalType);
+    $('#paymentDueDatesForEdit').val(rentalDetails.paymentDueDates);
+
+  }
  
 }
 
@@ -108,14 +123,40 @@ button.addEventListener('click', async  function() {
     alert("يوجد مشكلة في السيرفر");
     return;
   }
-  const body = {
-    name: name,
-    description: description,
-    numberOfRooms: roomsCount,
-    type: "APARTMENT",
-    version: 1,
-    buildingId: localStorage.getItem('buildingId'),
-  };
+  var body;
+  if($('#tenentNameForEdit').val() != null || $('#tenentNameForEdit').val() != ""){
+    console.log("Inside Put Function");
+    body = {
+      name: name,
+      description: description,
+      numberOfRooms: roomsCount,
+      type: "APARTMENT",
+      version: 1,
+      buildingId: localStorage.getItem('buildingId'),
+      rentalDetails:{
+        monthlyRentValue: $('#tenentRentalForEdit').val(),
+        currency: $('#currencyForEdit').val(),
+        rentalStartDate: $('#rentalStartDateForEdit').val(),
+        rentalType: $('#rentalTypeForEdit').val(),
+        paymentDueDates: $('#paymentDueDatesForEdit').val(),
+        tenant: {
+          name: $('#tenentNameForEdit').val(),
+          phoneNumber: $('#tenentPhoneForEdit').val(),
+        }
+      }
+    };
+  }else {
+    console.log("Inside Put Function2");
+    body = {
+      name: name,
+      description: description,
+      numberOfRooms: roomsCount,
+      type: "APARTMENT",
+      version: 1,
+      buildingId: localStorage.getItem('buildingId'),
+    };
+  }
+  
   //localStorage.removeItem('buildingId');
   try {
     const response = await apiPostOrPut(apiUrl, 'PUT', body);
@@ -149,7 +190,7 @@ rentAppBTN.addEventListener('click', async  function() {
     rentalStartDate: rentalStartDate,
     tenant:{
       name: name,
-      phone: phone,
+      phoneNumber: phone,
     }
   };
   try {
