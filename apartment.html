@@ -333,6 +333,7 @@ tbody td {
                     <th class="pd-y-5">تاريخ استحقاق الشيك ان وجد </th>
                     <th class="pd-y-5"> الملاحظات</th>
                     <th class="pd-y-5"> حذف الدفعة</th>
+                    <th class="pd-y-5"> تعديل الدفعة</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -594,6 +595,45 @@ tbody td {
       </footer>
     </div><!-- br-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
+
+<!-- Create Product Modal -->
+<div class="modal fade" id="editPaymentModal" tabindex="-1" aria-labelledby="editPaymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="editPaymentModalLabel">تعديل الدفعة</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <!-- Edit Product Form -->
+              <form id="editProductForm">
+                  <div class="mb-3">
+                      <label for="productName" class="form-label">Product Name</label>
+                      <input type="text" class="form-control" id="productNameCreate" placeholder="Enter product name" required>
+                  </div>
+                  <div class="mb-3">
+                      <label for="productPrice" class="form-label">Price</label>
+                      <input type="number" class="form-control" id="productPriceCreate" placeholder="Enter product price" required>
+                  </div>
+                  <div class="mb-3">
+                      <label for="productDescription" class="form-label">Description</label>
+                      <textarea class="form-control" id="productDescriptionCreate" rows="4" placeholder="Enter product description"></textarea>
+                  </div>
+                  <div class="mb-3">
+                      <label for="productCategory" class="form-label">Category</label>
+                      <select class="form-select"  required id="productCategoryCreate" > 
+                      </select>
+                  </div>
+                  <input type ="hidden" id="paymentId">
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
+              <button type="button" class="btn btn-primary" id="createProductBTN">حفظ</button>
+          </div>
+      </div>
+  </div>
+</div>
 
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/jquery-ui/ui/widgets/datepicker.js"></script>

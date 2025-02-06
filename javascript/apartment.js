@@ -104,11 +104,15 @@ function displayPayments(payments) {
       <td class="tx-danger">${payment.chequeDueDate ? payment.chequeDueDate.split('T')[0] : '-'}</td>
       <td>${payment.notes}</td>
       <td style="cursor: pointer; font-weight: bold"><a href="javascript:deletePayment(${payment.id})" class="view-details tx-danger">حذف</a></td>
+      <td style="cursor: pointer; font-weight: bold"><a href="javascript:editPaymentModalShow(${payment.id})" class="view-details tx-warning">تعديل</a></td>
       `;
       paymentsTableBody.appendChild(row);
   });
 }
-
+window.editPaymentModalShow = async function(id) {
+  $('#paymentId').val(id);
+  $('#editPaymentModal').modal('show');
+}
 
 const button = document.getElementById('EditBtn');
 
