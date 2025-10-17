@@ -22,7 +22,7 @@ $(document).ready(function() {
   
       // Make AJAX request
       $.ajax({
-        url: 'https://apartman-service-production.up.railway.app/buildings',
+        url: '89.116.110.164:8080/buildings',
         type: 'POST',
         data: formData,
         contentType: false, // Important for file uploads

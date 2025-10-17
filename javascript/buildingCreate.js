@@ -3,7 +3,7 @@ import { apiPostOrPut } from './apiHelper.js';
 $('form').on('submit', async function (e) {
   e.preventDefault();
   console.log("Building Post Funtion ..!");
-  const apiUrl = "https://apartman-service-production.up.railway.app/buildings";
+  const apiUrl = "89.116.110.164:8080/buildings";
   const name = $('#name').val();
   const address = $('#address').val();
   const apartmentCount = $('#apartmentCount').val();

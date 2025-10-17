@@ -15,7 +15,7 @@ if (buildingId) {
 
 
 function fetchBuildingDetails(id) {
-  const apiUrl = `https://apartman-service-production.up.railway.app/buildings/${id}`;
+  const apiUrl = `89.116.110.164:8080/buildings/${id}`;
   
   apiFetch(apiUrl)
     .then(data => {
@@ -26,7 +26,7 @@ function fetchBuildingDetails(id) {
     });
 }
 function fetchApartments(buildingId) {
-  const apiUrl = `https://apartman-service-production.up.railway.app/apartments/building-apartments/${buildingId}`;
+  const apiUrl = `89.116.110.164:8080/apartments/building-apartments/${buildingId}`;
 
   apiFetch(apiUrl)
     .then(data => {
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
 $('form').on('submit', async function (e) {
   e.preventDefault();
   console.log("Apartment Post Function ..!");
-  const apiUrl = "https://apartman-service-production.up.railway.app/apartments";
+  const apiUrl = "89.116.110.164:8080/apartments";
   const name = $('#name').val();
   const description = $('#description').val();
   const roomsCount = $('#roomsCount').val();
@@ -124,7 +124,7 @@ $('form').on('submit', async function (e) {
 });
 
 window.deleteApartment = async function(id) {
-  const apiUrl = `https://apartman-service-production.up.railway.app/apartments/${id}`;
+  const apiUrl = `89.116.110.164:8080/apartments/${id}`;
   const body = {};
   const isConfirmed = confirm("هل أنت متأكد ؟");
   if (!isConfirmed) {

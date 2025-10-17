@@ -68,7 +68,7 @@ self.addEventListener('activate', (event) => {
 
 
 self.addEventListener('fetch', (event) => {
-  const apiUrlPattern = 'https://apartman-service-production.up.railway.app';
+  const apiUrlPattern = '89.116.110.164:8080';
 
   if (event.request.url.startsWith(apiUrlPattern)) {
     // For API requests, use a network-first strategy

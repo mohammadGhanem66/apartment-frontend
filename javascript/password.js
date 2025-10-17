@@ -3,7 +3,7 @@ import { apiPostOrPut } from './apiHelper.js';
 $('form').on('submit', async function (e) {
   e.preventDefault();
 
-  const apiUrl = "https://apartman-service-production.up.railway.app/authentication/update-password";
+  const apiUrl = "89.116.110.164:8080/authentication/update-password";
   const oldPassword = $('#currentPass').val();
   const newPassword = $('#newPass').val();
   if(localStorage.getItem('email') == null || localStorage.getItem('email') == ""){

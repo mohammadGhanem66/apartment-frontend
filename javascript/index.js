@@ -3,7 +3,7 @@ import { apiFetch, apiPostOrPut } from './apiHelper.js';
 loadBuildings();
 loadStatistics();
 function loadBuildings() {
-  const apiUrl = "https://apartman-service-production.up.railway.app/buildings/all";
+  const apiUrl = "89.116.110.164:8080/buildings/all";
 
   apiFetch(apiUrl)
     .then(data => {
@@ -33,7 +33,7 @@ function displayBuildings(buildings) {
 }
 function loadStatistics() {
   console.log("loadStatistics Function");
-  const apiUrl = "https://apartman-service-production.up.railway.app/statistics/main-page-statistics";
+  const apiUrl = "89.116.110.164:8080/statistics/main-page-statistics";
 
   apiFetch(apiUrl)
     .then(data => {
@@ -51,7 +51,7 @@ function displayStatistics(data){
   document.getElementById('stat4').textContent = data.unpaidOwedAmounts;
 }
 window.deleteBuilding = async function(buildingId) {
-  const apiUrl = `https://apartman-service-production.up.railway.app/buildings/${buildingId}`;
+  const apiUrl = `89.116.110.164:8080/buildings/${buildingId}`;
   const body = {};
   const isConfirmed = confirm("هل أنت متأكد ؟");
   if (!isConfirmed) {
