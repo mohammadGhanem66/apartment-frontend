@@ -13,7 +13,7 @@ if (apartmentId) {
 }
 
 function fetchApartmentDetails(id) {
-  const apiUrl = `89.116.110.164:8080/apartments/${id}`;
+  const apiUrl = `http://89.116.110.164:8080/apartments/${id}`;
   
   apiFetch(apiUrl)
       .then(data => {
@@ -27,7 +27,7 @@ function fetchApartmentDetails(id) {
 function fetchPayments(apartmentId) {
   console.log("Payments API");
   const currentYear = new Date().getFullYear();
-  const apiUrl = `89.116.110.164:8080/payments/apartment-payments/${apartmentId}`+'?year='+currentYear;
+  const apiUrl = `http://89.116.110.164:8080/payments/apartment-payments/${apartmentId}`+'?year='+currentYear;
 
   apiFetch(apiUrl)
       .then(data => {
@@ -118,7 +118,7 @@ const button = document.getElementById('EditBtn');
 
 button.addEventListener('click', async  function() {
   console.log("Appartment Put Function ....!");
-  const apiUrl = "89.116.110.164:8080/apartments/"+apartmentId;
+  const apiUrl = "http://89.116.110.164:8080/apartments/"+apartmentId;
   const name = $('#appartmentNameEdit').val();
   const description = $('#appartmentDescriptionEdit').val();
   const roomsCount = $('#appartmentRoomsNumberEdit').val();
@@ -177,7 +177,7 @@ const rentAppBTN = document.getElementById('rentAppBTN');
 
 rentAppBTN.addEventListener('click', async  function() {
   console.log("Rent Post Function ....!");
-  const apiUrl = "89.116.110.164:8080/apartments/rent-apartment/"+apartmentId;
+  const apiUrl = "http://89.116.110.164:8080/apartments/rent-apartment/"+apartmentId;
   const name = $('#rentingUserName').val();
   const phone = $('#rentingUserPhone').val();
   const monthlyRentValue = $('#rentingUserPay').val();
@@ -222,7 +222,7 @@ unRentingBTN.addEventListener('click', async  function() {
   }
 
   console.log("UnRent Post Function ....!");
-  const apiUrl = "89.116.110.164:8080/apartments/vacate-apartment/"+apartmentId;
+  const apiUrl = "http://89.116.110.164:8080/apartments/vacate-apartment/"+apartmentId;
   const body = {};
   try {
     const response = await apiPostOrPut(apiUrl, 'POST', body);
@@ -238,7 +238,7 @@ const paymentBTN = document.getElementById('paymentBTN');
 
 paymentBTN.addEventListener('click', async  function() {
   console.log("Payment Post Function ....!");
-  const apiUrl = "89.116.110.164:8080/payments";
+  const apiUrl = "http://89.116.110.164:8080/payments";
   const value = document.getElementById('paymentValue').value;
   const month = document.getElementById('month').value;
   const paymentType = document.getElementById('paymentType').value;
@@ -294,7 +294,7 @@ const fillterYearSelect = document.getElementById('yearsToFillter');
 fillterYearSelect.addEventListener('change', async  function() {
   console.log("Filttering Year function ...!");
   const year = document.getElementById('yearsToFillter').value;
-  const apiUrl = `89.116.110.164:8080/payments/apartment-payments/${apartmentId}`+'?year='+year;
+  const apiUrl = `http://89.116.110.164:8080/payments/apartment-payments/${apartmentId}`+'?year='+year;
 
   apiFetch(apiUrl)
       .then(data => {
@@ -307,7 +307,7 @@ fillterYearSelect.addEventListener('change', async  function() {
 
 
 window.deletePayment = async function(id) {
-  const apiUrl = `89.116.110.164:8080/payments/${id}`;
+  const apiUrl = `http://89.116.110.164:8080/payments/${id}`;
   const body = {};
   const isConfirmed = confirm("هل أنت متأكد ؟");
   if (!isConfirmed) {

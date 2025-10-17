@@ -68,7 +68,7 @@ self.addEventListener('activate', (event) => {
 
 
 self.addEventListener('fetch', (event) => {
-  const apiUrlPattern = '89.116.110.164:8080';
+  const apiUrlPattern = 'http://89.116.110.164:8080';
 
   if (event.request.url.startsWith(apiUrlPattern)) {
     // For API requests, use a network-first strategy
